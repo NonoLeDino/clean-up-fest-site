@@ -1,0 +1,120 @@
+---
+const steps = [
+  {
+    n: '01',
+    kicker: 'Ramasser',
+    titre: 'Vos mégots, notre carburant.',
+    desc: "Chaque cendrier collectif ramené au village est vidé, pesé, comptabilisé. En 2025, 42 800 mégots récoltés en une seule journée.",
+    photo: '/media/photos/pickup-plastic.jpg',
+  },
+  {
+    n: '02',
+    kicker: 'Transformer',
+    titre: 'Dépollués, valorisés.',
+    desc: "Tchao Mégot dépollue les mégots (nicotine, goudron, plastique) et récupère l'acétate de cellulose. La fibre devient un isolant thermique certifié.",
+    photo: '/media/photos/talk.jpg',
+  },
+  {
+    n: '03',
+    kicker: 'Redistribuer',
+    titre: 'Doudounes offertes.',
+    desc: "L'isolant est cousu dans des doudounes solidaires, distribuées gratuitement aux personnes sans-abri par des maraudes partenaires à Lille et dans les Hauts-de-France.",
+    photo: '/media/photos/cleanup-volunteers.jpg',
+  },
+];
+---
+
+<section class="section-cream relative isolate overflow-hidden">
+  <div class="container-page py-24 lg:py-32">
+    <div class="grid md:grid-cols-12 gap-10 items-end mb-14">
+      <div class="md:col-span-8">
+        <span class="eyebrow">Circular · avec Tchao Mégot</span>
+        <h2 class="mt-3 max-w-2xl">Vos mégots deviennent<br/><span class="text-accent">des doudounes.</span></h2>
+      </div>
+      <div class="md:col-span-4">
+        <div class="bg-white border border-border rounded-lg p-5 flex items-center gap-4">
+          <img
+            src="/logos/tchao-megot.png"
+            alt="Logo Tchao Mégot"
+            class="w-16 h-16 object-contain shrink-0"
+            loading="lazy"
+          />
+          <div>
+            <div class="font-mono text-[10px] uppercase tracking-widest text-ink-muted">Partenaire recyclage</div>
+            <a href="https://tchaomegot.com" target="_blank" rel="noopener noreferrer"
+               class="font-semibold text-primary link-anim inline-flex items-center gap-1 mt-1">
+              tchaomegot.com
+              <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H8M17 7v9"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="max-w-3xl text-lg md:text-xl text-ink leading-relaxed mb-14">
+      Tous les mégots ramassés pendant le Clean Up Fest sont collectés, dépollués et transformés
+      en <strong class="text-primary">isolant thermique</strong> par Tchao Mégot, puis intégrés dans des
+      <strong class="text-primary">doudounes solidaires</strong> ensuite distribuées aux personnes sans-abri.
+      Rien ne se perd, tout se transforme.
+    </p>
+
+    <!-- 3 étapes avec flèches entre -->
+    <div class="grid gap-4 md:grid-cols-3 relative reveal-group">
+      {steps.map((s, i) => (
+        <div class="relative reveal">
+          <article class="bg-white border border-border rounded-lg overflow-hidden h-full flex flex-col group hover:border-primary/40 hover:shadow-lg transition-all duration-300">
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                src={s.photo}
+                alt=""
+                aria-hidden="true"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 chip !bg-white/95 !text-ink !text-[10px]">Étape {s.n}</span>
+              <div class="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-widest text-white/85">
+                {s.kicker}
+              </div>
+            </div>
+            <div class="p-5 flex-1 flex flex-col">
+              <h3 class="!text-xl text-ink font-semibold leading-tight">{s.titre}</h3>
+              <p class="mt-2 text-sm text-ink-muted leading-relaxed flex-1">{s.desc}</p>
+            </div>
+          </article>
+
+          {i < steps.length - 1 && (
+            <div aria-hidden="true" class="hidden md:flex absolute -right-3 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full bg-accent text-white items-center justify-center shadow-lg">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <!-- Footer stat -->
+    <div class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
+      <div class="flex items-center gap-6">
+        <div>
+          <div class="font-display font-semibold text-4xl text-primary tabular-nums">42 800</div>
+          <div class="eyebrow mt-1">Mégots recyclés en 2025</div>
+        </div>
+        <div class="hidden sm:block w-px h-12 bg-border"></div>
+        <div>
+          <div class="font-display font-semibold text-4xl text-accent tabular-nums">= 4</div>
+          <div class="eyebrow mt-1">Doudounes complètes</div>
+        </div>
+      </div>
+      <a href="https://tchaomegot.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+        Découvrir Tchao Mégot
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H8M17 7v9"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
