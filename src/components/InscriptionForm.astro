@@ -38,7 +38,7 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
         type="tel"
         name="telephone"
         required
-        pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$"
+        pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
         placeholder="06 12 34 56 78"
         autocomplete="tel"
         class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
@@ -50,7 +50,7 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
         type="text"
         name="codePostal"
         required
-        pattern="^\d{5}$"
+        pattern="\d{5}"
         maxlength="5"
         inputmode="numeric"
         placeholder="59000"
