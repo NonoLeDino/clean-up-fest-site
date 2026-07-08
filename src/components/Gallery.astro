@@ -3,18 +3,18 @@ type Props = { preview?: boolean };
 const { preview = false } = Astro.props;
 
 const photos: Array<{ src: string; alt: string }> = [
-  { src: '/media/photos/beach-cleanup.jpg',    alt: "Rangée de bacs de tri sélectif jaune, bleu, rouge et vert" },
-  { src: '/media/photos/dj-console.jpg',       alt: "DJ en action, bras levé face au public, fumée colorée" },
-  { src: '/media/photos/pickup-plastic.jpg',   alt: "Poubelle urbaine décorée de fleurs, symbole de civisme" },
-  { src: '/media/photos/festival-day.jpg',     alt: "Confettis et lumières sur le public d'une scène de festival" },
-  { src: '/media/photos/volunteer.jpg',        alt: "Bénévole vu de dos, casquette rouge et t-shirt Volunteer" },
-  { src: '/media/photos/running-crowd.jpg',    alt: "Groupe de coureurs au coucher du soleil, silhouettes en contre-jour" },
-  { src: '/media/photos/foodtruck-real.jpg',   alt: "Burger épais et gourmand servi lors du festival" },
-  { src: '/media/photos/dj-hands.jpg',         alt: "Portrait rapproché d'un DJ derrière son microphone" },
-  { src: '/media/photos/runners-city.jpg',     alt: "Peloton de cyclistes en course dans la ville" },
-  { src: '/media/photos/food-truck.jpg',       alt: "Terrasse extérieure illuminée de guirlandes, ambiance chaleureuse" },
-  { src: '/media/photos/factory-pollution.jpg',alt: "Usine industrielle avec fumées, rappelant l'urgence écologique" },
-  { src: '/media/photos/hero-crowd.jpg',       alt: "Foule bras levés face à une scène éclairée en concert" },
+  { src: '/media/photos/ai/cleanup-crowd-lille.jpg',     alt: "Foule engagée sur la Grand Place de Lille avec drapeaux verts et roses" },
+  { src: '/media/photos/ai/cigarette-butts-hand.jpg',    alt: "Main gantée tenant une pile de mégots ramassés" },
+  { src: '/media/photos/ai/volunteers-team-lille.jpg',   alt: "Équipe de 5 bénévoles en gilets fluo ramassant des déchets à Lille" },
+  { src: '/media/photos/ai/dj-on-bike.jpg',              alt: "DJ mixant sur un vélo cargo pendant le festival, ambiance dansante" },
+  { src: '/media/photos/ai/coat-to-homeless.jpg',        alt: "Bénévole donnant une doudoune verte à une personne sans-abri" },
+  { src: '/media/photos/ai/runners-lille-street.jpg',    alt: "Coureurs avec dossards sur les pavés lillois au lever du soleil" },
+  { src: '/media/photos/ai/foodtruck-festival.jpg',      alt: "Foodtruck festival avec queue de gourmands, ambiance dorée" },
+  { src: '/media/photos/ai/beer-finish-line.jpg',        alt: "Bouteilles de bière artisanale offertes à l'arrivée de la course" },
+  { src: '/media/photos/ai/green-puffer-recycled.jpg',   alt: "Doudoune verte olive issue de mégots recyclés, packshot studio" },
+  { src: '/media/photos/ai/briefing-volunteers.jpg',     alt: "Briefing d'une équipe de bénévoles dans un parc, ambiance automnale" },
+  { src: '/media/photos/ai/aerial-march-grand-place.jpg',alt: "Vue aérienne de la marche citoyenne partant de la Grand Place" },
+  { src: '/media/photos/ai/trash-transformation.jpg',    alt: "Concept photo : mégots à gauche, doudoune verte à droite, transformation solidaire" },
 ];
 const items = preview ? photos.slice(0, 8) : photos;
 ---
