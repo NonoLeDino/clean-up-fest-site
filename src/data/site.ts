@@ -18,8 +18,8 @@ export const site = {
     "Une marche de 10 km gratuite pour ramasser les déchets ou une course chronométrée au profit du World CleanUp Day. " +
     "Tout le week-end : DJ sets en continu, food trucks locaux et une bière offerte à l'arrivée !",
   manifeste:
-    "S'engager tout en s'ambiançant, c'est possible. Choisissez votre camp : marchez 10 km pour nettoyer la ville " +
-    "ou courez pour reverser vos 25 € à l'association. À l'arrivée ? DJ set à vélo, food trucks et bière offerte pour tout le monde.",
+    "S'engager en s'ambiançant. Marcher 10 km pour nettoyer, ou courir pour reverser 25 €. " +
+    "À l'arrivée : DJ, food, bière offerte.",
   accroche: 'Rejoignez le mouvement !',
   meta: {
     title: "Clean Up Fest — Le festival qui nettoie Lille",
