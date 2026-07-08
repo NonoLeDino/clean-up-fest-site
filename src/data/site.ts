@@ -82,12 +82,12 @@ export type Univers = {
 };
 
 export const univers: Univers[] = [
-  { id: 'clean',     titre: 'Clean',        desc: 'Ramassage collectif des déchets dans les rues de Lille, 10 km à travers la ville.', couleur: 'green', icon: 'leaf',   photo: '/media/photos/cleanup-hand-bag.jpg' },
+  { id: 'clean',     titre: 'Clean',        desc: 'Ramassage collectif des déchets dans les rues de Lille, 10 km à travers la ville.', couleur: 'green', icon: 'leaf',   photo: '/media/photos/pickup-plastic.jpg' },
   { id: 'music',     titre: 'Music',        desc: "Un DJ à vélo qui vous suit toute la journée. La cadence à votre rythme.",           couleur: 'pink',  icon: 'music',  photo: '/media/photos/dj-console.jpg' },
   { id: 'run',       titre: 'Run',          desc: "Une course 10 km chronométrée. 100 % de vos 25 € reversés à l'association.",         couleur: 'dark',  icon: 'run',    photo: '/media/photos/running-feet.jpg' },
-  { id: 'food',      titre: 'Food & Drinks',desc: "Foodtrucks locaux et une bière artisanale offerte à l'arrivée.",                    couleur: 'cream', icon: 'cup',    photo: '/media/photos/food-truck.jpg' },
+  { id: 'food',      titre: 'Food & Drinks',desc: "Foodtrucks locaux et une bière artisanale offerte à l'arrivée.",                    couleur: 'cream', icon: 'cup',    photo: '/media/photos/foodtruck-real.jpg' },
   { id: 'talks',     titre: 'Talks',        desc: 'Conférences éclair sur le zéro-déchet, le mégot, la mode circulaire.',              couleur: 'green', icon: 'mic',    photo: '/media/photos/talk.jpg' },
-  { id: 'community', titre: 'Community',    desc: 'Écoles, entreprises, collectivités, particuliers. Ensemble en même temps.',         couleur: 'pink',  icon: 'people', photo: '/media/photos/cleanup-volunteers.jpg' },
+  { id: 'community', titre: 'Community',    desc: 'Écoles, entreprises, collectivités, particuliers. Ensemble en même temps.',         couleur: 'pink',  icon: 'people', photo: '/media/photos/volunteer.jpg' },
 ];
 
 /* ============ PROGRAMME (créneaux dans la journée) ============ */
@@ -122,14 +122,14 @@ export type Artiste = {
 };
 
 export const lineup: Artiste[] = [
-  { id: '1', nom: 'Nono',           slot: 'Marche',  photo: '/media/photos/portrait-1.jpg', genre: 'French House' },
-  { id: '2', nom: 'Verdure',        slot: 'Marche',  photo: '/media/photos/portrait-2.jpg', genre: 'Deep House' },
-  { id: '3', nom: 'Ella Cast',      slot: 'Course',  photo: '/media/photos/portrait-3.jpg', genre: 'Techno' },
-  { id: '4', nom: 'BPM Deûle',      slot: 'Course',  photo: '/media/photos/portrait-4.jpg', genre: 'Progressive' },
-  { id: '5', nom: 'Tekno Verdure',  slot: 'Course',  photo: '/media/photos/portrait-5.jpg', genre: 'Hard Techno' },
-  { id: '6', nom: 'Sunset Kids',    slot: 'Closing', photo: '/media/photos/portrait-6.jpg', genre: 'Disco Edits' },
-  { id: '7', nom: 'Green Machine',  slot: 'Closing', photo: '/media/photos/portrait-7.jpg', genre: 'Electro Live', headliner: true },
-  { id: '8', nom: 'MC Alba',        slot: 'Closing', photo: '/media/photos/portrait-8.jpg', genre: 'Hip-Hop / Spoken' },
+  { id: '1', nom: 'Nono',           slot: 'Marche',  photo: '/media/photos/portrait-8.jpg',        genre: 'French House' },
+  { id: '2', nom: 'Verdure',        slot: 'Marche',  photo: '/media/photos/portrait-2.jpg',        genre: 'Deep House' },
+  { id: '3', nom: 'Ella Cast',      slot: 'Course',  photo: '/media/photos/portrait-1.jpg',        genre: 'Techno' },
+  { id: '4', nom: 'BPM Deûle',      slot: 'Course',  photo: '/media/photos/portrait-3.jpg',        genre: 'Progressive' },
+  { id: '5', nom: 'Tekno Verdure',  slot: 'Course',  photo: '/media/photos/portrait-mid-woman.jpg',genre: 'Hard Techno' },
+  { id: '6', nom: 'Sunset Kids',    slot: 'Closing', photo: '/media/photos/portrait-7.jpg',        genre: 'Disco Edits' },
+  { id: '7', nom: 'Green Machine',  slot: 'Closing', photo: '/media/photos/portrait-6.jpg',        genre: 'Electro Live', headliner: true },
+  { id: '8', nom: 'MC Alba',        slot: 'Closing', photo: '/media/photos/portrait-4.jpg',        genre: 'Hip-Hop / Spoken' },
 ];
 
 /* ============ TÉMOIGNAGES ============ */
@@ -138,19 +138,19 @@ export const temoignages: Temoignage[] = [
   {
     nom: 'Léa M.',
     role: 'Participante 2025 · Marche',
-    photo: '/media/photos/portrait-3.jpg',
+    photo: '/media/photos/portrait-4.jpg',
     quote: "J'étais venue pour la marche entre potes. Je suis repartie avec 12 kilos de mégots ramassés et une bière offerte. Sourire toute la journée.",
   },
   {
     nom: 'Karim B.',
     role: 'Coureur 10km · Podium H30',
-    photo: '/media/photos/portrait-5.jpg',
+    photo: '/media/photos/portrait-3.jpg',
     quote: "Une course sérieuse avec chrono, mais l'ambiance festival au milieu du parcours. On oublie la douleur, on danse un peu, on repart.",
   },
   {
     nom: 'F. R.',
     role: 'Responsable RSE · grande distribution, Lille',
-    photo: '/media/photos/portrait-2.jpg',
+    photo: '/media/photos/portrait-6.jpg',
     quote: "On a inscrit 40 salariés. Zéro relance interne. Le team building qui remplit vraiment sa promesse : le lien, la cause, la fête.",
   },
 ];
@@ -248,10 +248,10 @@ export type News = {
 };
 
 export const news: News[] = [
-  { titre: 'Tchao Mégot rejoint le Clean Up Fest',       chapo: 'Tous les mégots ramassés seront recyclés en matière première ou en doudounes solidaires.', date: '2026-06-14', tag: 'Partenaire', image: '/media/photos/cleanup-hands.jpg', href: '#' },
-  { titre: "La brasserie La Choulette offre les bières", chapo: "Une bière artisanale du Nord offerte à tous les participants à l'arrivée à la Citadelle.", date: '2026-05-22', tag: 'Partenaire', image: '/media/photos/food-truck.jpg',    href: '#' },
-  { titre: 'Le programme du 20 septembre est en ligne',  chapo: 'Marche, course, talks, foodtrucks, closing set. Tout est prêt.',                            date: '2026-05-10', tag: 'Programme',  image: '/media/photos/festival-lights.jpg', href: '#' },
-  { titre: 'Édition 2025 : les chiffres',                chapo: 'Retour sur une première édition qui a dépassé toutes nos attentes.',                         date: '2026-04-02', tag: 'Édition',    image: '/media/photos/running-crowd.jpg',   href: '#' },
+  { titre: 'Tchao Mégot rejoint le Clean Up Fest',       chapo: 'Tous les mégots ramassés seront recyclés en matière première ou en doudounes solidaires.', date: '2026-06-14', tag: 'Partenaire', image: '/media/photos/pickup-plastic.jpg',  href: '#' },
+  { titre: "La brasserie La Choulette offre les bières", chapo: "Une bière artisanale du Nord offerte à tous les participants à l'arrivée à la Citadelle.", date: '2026-05-22', tag: 'Partenaire', image: '/media/photos/foodtruck-real.jpg', href: '#' },
+  { titre: 'Le programme du 19 septembre est en ligne',  chapo: 'Marche, course, talks, foodtrucks, closing set. Tout est prêt.',                            date: '2026-05-10', tag: 'Programme',  image: '/media/photos/festival-day.jpg',   href: '#' },
+  { titre: 'Édition 2025 : les chiffres',                chapo: 'Retour sur une première édition qui a dépassé toutes nos attentes.',                         date: '2026-04-02', tag: 'Édition',    image: '/media/photos/running-crowd.jpg',  href: '#' },
 ];
 
 /* ============ MAP / PARCOURS ============ */
@@ -318,15 +318,15 @@ export const routes: Route[] = [
 /* ============ INSTAGRAM WALL ============ */
 export type IgPost = { image: string; caption: string; likes: number; days: number };
 export const igPosts: IgPost[] = [
-  { image: '/media/photos/festival-lights.jpg', caption: 'H-3 avant le grand jour. Playlist prête, sacs prêts, on est prêts.',       likes: 2412, days: 2 },
-  { image: '/media/photos/dj-console.jpg',      caption: 'Merci @dj_verdure pour ce set incroyable ✨ #CleanUpFest2025',                likes: 3120, days: 5 },
-  { image: '/media/photos/running-crowd.jpg',   caption: '10K solidaire — 512 coureurs, 8 250€ reversés à @worldcleanupday 🏃‍♀️',      likes: 1876, days: 7 },
-  { image: '/media/photos/cleanup-hands.jpg',   caption: '2,3 tonnes de déchets. Ramassés à Lille. En dansant. Chiffres 2025.',        likes: 4508, days: 10 },
-  { image: '/media/photos/portrait-6.jpg',      caption: 'Portrait de @sunset_kids avant son closing set. On sait déjà que ça va tap.', likes: 2201, days: 12 },
-  { image: '/media/photos/food-truck.jpg',      caption: 'La brasserie La Choulette nous rejoint pour 2026 🍻 Bière offerte à tous.',   likes: 1892, days: 14 },
-  { image: '/media/photos/volunteer.jpg',       caption: '150 bénévoles briefés ce weekend. La team qui rend l\'event possible ❤️',     likes: 3455, days: 18 },
-  { image: '/media/photos/beach-cleanup.jpg',   caption: 'On teste le tri sélectif avec @tchaomegot. Les mégots deviennent doudoune.',   likes: 1620, days: 21 },
-  { image: '/media/photos/dj-hands.jpg',        caption: 'Behind the decks · @ella_cast x @bpm_deule — lineup 2026 en train de tomber.',likes: 2778, days: 25 },
+  { image: '/media/photos/festival-day.jpg',      caption: 'H-3 avant le grand jour. Playlist prête, sacs prêts, on est prêts.',       likes: 2412, days: 2 },
+  { image: '/media/photos/dj-console.jpg',        caption: 'Merci @dj_verdure pour ce set incroyable ✨ #CleanUpFest2025',                likes: 3120, days: 5 },
+  { image: '/media/photos/running-crowd.jpg',     caption: '10K solidaire — 512 coureurs, 8 250 € reversés à @worldcleanupday 🏃‍♀️',      likes: 1876, days: 7 },
+  { image: '/media/photos/pickup-plastic.jpg',    caption: '2,3 tonnes de déchets. Ramassés à Lille. En dansant. Chiffres 2025.',        likes: 4508, days: 10 },
+  { image: '/media/photos/portrait-6.jpg',        caption: 'Portrait de @sunset_kids avant son closing set. On sait déjà que ça va tap.', likes: 2201, days: 12 },
+  { image: '/media/photos/foodtruck-real.jpg',    caption: 'La brasserie La Choulette nous rejoint pour 2026 🍻 Bière offerte à tous.',   likes: 1892, days: 14 },
+  { image: '/media/photos/volunteer.jpg',         caption: "150 bénévoles briefés ce weekend. La team qui rend l'event possible ❤️",      likes: 3455, days: 18 },
+  { image: '/media/photos/puffer-jacket.jpg',     caption: 'On teste avec @tchaomegot : les mégots deviennent des doudounes solidaires.', likes: 1620, days: 21 },
+  { image: '/media/photos/dj-hands.jpg',          caption: 'Behind the decks · @ella_cast x @bpm_deule — lineup 2026 en train de tomber.',likes: 2778, days: 25 },
 ];
 export const pratique = [
   { titre: 'Lieu',      valeur: 'Grand Place, Lille',       sub: 'Départ village · retrait des kits'                    , icon: 'map' },

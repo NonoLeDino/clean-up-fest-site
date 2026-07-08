@@ -3,18 +3,18 @@ type Props = { preview?: boolean };
 const { preview = false } = Astro.props;
 
 const photos: Array<{ src: string; alt: string }> = [
-  { src: '/media/photos/pickup-plastic.jpg',     alt: "Main gantée ramassant un déchet plastique au sol" },
-  { src: '/media/photos/dj-console.jpg',         alt: "DJ en action, bras levé face au public, fumée colorée" },
-  { src: '/media/photos/cleanup-street.jpg',     alt: "Ramassage de déchets dans la rue" },
-  { src: '/media/photos/festival-lights.jpg',    alt: "Confettis et lumières sur le public d'une scène de festival" },
-  { src: '/media/photos/cleanup-volunteers.jpg', alt: "Groupe de bénévoles en action lors d'un nettoyage collectif" },
-  { src: '/media/photos/beach-cleanup.jpg',      alt: "Rangée de bacs de tri sélectif jaune, bleu, rouge et vert" },
-  { src: '/media/photos/dj-hands.jpg',           alt: "Portrait rapproché d'un DJ derrière ses platines" },
-  { src: '/media/photos/food-truck.jpg',         alt: "Devanture d'un foodtruck illuminé la nuit, guirlandes lumineuses" },
-  { src: '/media/photos/running-feet.jpg',       alt: "Chaussures de course vues d'en bas dans un escalier" },
-  { src: '/media/photos/cleanup-hand-bag.jpg',   alt: "Personne remplissant un sac poubelle lors d'un nettoyage citoyen" },
-  { src: '/media/photos/running-crowd.jpg',      alt: "Groupe de coureurs au coucher du soleil, silhouettes en contre-jour" },
-  { src: '/media/photos/hero-crowd.jpg',         alt: "Foule bras levés face à une scène éclairée en concert" },
+  { src: '/media/photos/beach-cleanup.jpg',    alt: "Rangée de bacs de tri sélectif jaune, bleu, rouge et vert" },
+  { src: '/media/photos/dj-console.jpg',       alt: "DJ en action, bras levé face au public, fumée colorée" },
+  { src: '/media/photos/pickup-plastic.jpg',   alt: "Poubelle urbaine décorée de fleurs, symbole de civisme" },
+  { src: '/media/photos/festival-day.jpg',     alt: "Confettis et lumières sur le public d'une scène de festival" },
+  { src: '/media/photos/volunteer.jpg',        alt: "Bénévole vu de dos, casquette rouge et t-shirt Volunteer" },
+  { src: '/media/photos/running-crowd.jpg',    alt: "Groupe de coureurs au coucher du soleil, silhouettes en contre-jour" },
+  { src: '/media/photos/foodtruck-real.jpg',   alt: "Burger épais et gourmand servi lors du festival" },
+  { src: '/media/photos/dj-hands.jpg',         alt: "Portrait rapproché d'un DJ derrière son microphone" },
+  { src: '/media/photos/runners-city.jpg',     alt: "Peloton de cyclistes en course dans la ville" },
+  { src: '/media/photos/food-truck.jpg',       alt: "Terrasse extérieure illuminée de guirlandes, ambiance chaleureuse" },
+  { src: '/media/photos/factory-pollution.jpg',alt: "Usine industrielle avec fumées, rappelant l'urgence écologique" },
+  { src: '/media/photos/hero-crowd.jpg',       alt: "Foule bras levés face à une scène éclairée en concert" },
 ];
 const items = preview ? photos.slice(0, 8) : photos;
 ---
