@@ -8,67 +8,71 @@ import { nav, site } from '@/data/site';
      class="fixed top-0 left-0 right-0 z-50 h-[3px] bg-accent scale-x-0 origin-left transition-transform duration-100"
      style="transform-origin: left;"></div>
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500 pt-3 sm:pt-4">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 pt-3 sm:pt-5">
   <div class="container-page">
-    <!-- Micro ticker (visible on scroll) -->
-    <div id="header-ticker" class="hidden sm:block max-w-max mx-auto mb-2 opacity-0 -translate-y-1 transition-all duration-500">
-      <div class="bg-ink text-white text-[10px] uppercase tracking-[0.24em] font-mono px-4 py-1.5 rounded-full flex items-center gap-3">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-soft"></span>
-        <span>DIM 20.09.26 · Grand Place → Citadelle · Inscriptions ouvertes</span>
-      </div>
-    </div>
+    <div class="flex items-center justify-between gap-3 sm:gap-4">
 
-    <div id="header-pill" class="flex items-center justify-between gap-4 bg-white/95 backdrop-blur-xl border border-border rounded-full pl-4 pr-2 sm:pl-5 sm:pr-3 py-2 sm:py-2.5 shadow-card transition-all duration-500">
-      <a href="/" class="flex items-center gap-2 shrink-0 group" aria-label="Clean Up Fest — Accueil">
-        <Logo variant="green" size="sm" />
-        <div class="hidden sm:flex flex-col leading-none font-mono text-[9px] text-ink-muted uppercase tracking-[0.18em] pl-2 border-l border-border ml-1">
-          <span>Édition</span>
-          <span class="text-ink font-semibold mt-0.5">2026</span>
-        </div>
+      <!-- LEFT tile : Logo only -->
+      <a href="/" aria-label="Clean Up Fest — Accueil"
+         class="group shrink-0 bg-white/95 backdrop-blur-xl border border-border rounded-full pl-2 pr-4 sm:pr-5 py-2 shadow-card flex items-center gap-2.5 hover:shadow-lg transition-shadow duration-300">
+        <span class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors">
+          <Logo variant="green" size="sm" />
+        </span>
+        <span class="hidden sm:flex flex-col leading-tight">
+          <span class="font-display font-bold text-ink text-sm">Clean Up Fest</span>
+          <span class="font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted">Est. Lille · 2026</span>
+        </span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-1 min-w-0" aria-label="Navigation principale">
+      <!-- CENTER tile : nav (desktop) -->
+      <nav aria-label="Navigation principale"
+           class="hidden lg:flex items-center bg-white/95 backdrop-blur-xl border border-border rounded-full px-1.5 py-1.5 shadow-card">
         {nav.map((item) => (
           <a
             href={item.href}
-            class="group relative px-3 py-2 rounded-full text-sm font-semibold text-ink transition-colors cursor-pointer overflow-hidden"
+            class="group relative px-3.5 py-2 rounded-full text-sm font-semibold text-ink transition-colors cursor-pointer whitespace-nowrap"
           >
-            <span class="relative z-10 transition-colors group-hover:text-white">{item.label}</span>
-            <span class="absolute inset-0 bg-ink rounded-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+            <span class="relative z-10 group-hover:text-white transition-colors duration-300">{item.label}</span>
+            <span aria-hidden="true"
+                  class="absolute inset-0 bg-ink rounded-full scale-x-0 group-hover:scale-x-100 origin-center transition-transform duration-300"></span>
           </a>
         ))}
       </nav>
 
-      <div class="flex items-center gap-2 shrink-0">
-        <!-- Live status + countdown badge -->
-        <div class="hidden md:flex items-center gap-2.5 text-[10px] font-mono uppercase tracking-[0.16em] font-semibold text-ink-muted border-r border-border pr-3 mr-1">
-          <span class="flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary-glow pulse-soft"></span>
-            Live
+      <!-- RIGHT tile : Live + CTA -->
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <!-- Live status pill -->
+        <div class="hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-xl border border-border rounded-full pl-2.5 pr-3 py-1.5 shadow-card">
+          <span class="relative flex w-2 h-2">
+            <span class="absolute inset-0 rounded-full bg-primary-glow animate-ping opacity-75"></span>
+            <span class="relative inline-flex w-2 h-2 rounded-full bg-primary-glow"></span>
           </span>
-          <span class="flex flex-col items-center bg-ink text-white rounded-md px-2 py-1 leading-none">
-            <span class="text-[8px] opacity-70">J-</span>
-            <span id="header-jminus" class="tabular-nums text-xs mt-0.5">—</span>
+          <span class="text-[10px] font-mono font-bold uppercase tracking-[0.14em] text-ink">Live</span>
+          <span class="text-ink-muted font-mono text-[10px]">·</span>
+          <span class="flex items-baseline gap-0.5">
+            <span class="text-[9px] font-mono text-ink-muted uppercase tracking-widest">J-</span>
+            <span id="header-jminus" class="font-display font-bold text-ink tabular-nums text-sm leading-none">—</span>
           </span>
         </div>
 
-        <!-- Ticket CTA with animated ring -->
-        <a href="/inscription" class="relative btn btn-primary !py-2.5 !px-5 text-sm group overflow-hidden">
-          <span class="relative z-10 flex items-center gap-1.5">
-            Get your ticket
-            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <!-- CTA -->
+        <a href="/inscription"
+           class="group relative bg-accent text-white rounded-full pl-5 pr-2 py-2 shadow-[0_8px_24px_rgba(255,0,127,0.32)] hover:shadow-[0_12px_32px_rgba(255,0,127,0.45)] transition-all duration-300 flex items-center gap-2 font-display font-semibold text-sm">
+          <span>Get your ticket</span>
+          <span class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-accent transition-colors duration-300">
+            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
             </svg>
           </span>
-          <span aria-hidden="true" class="absolute inset-0 rounded-full ring-2 ring-accent opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></span>
         </a>
 
+        <!-- Mobile menu -->
         <button
           type="button"
           id="mobile-menu-btn"
           aria-label="Ouvrir le menu"
           aria-expanded="false"
-          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-border cursor-pointer"
+          class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/95 border border-border shadow-card cursor-pointer"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
@@ -101,22 +105,11 @@ import { nav, site } from '@/data/site';
 
   // Scroll progress bar
   const progress = document.getElementById('scroll-progress');
-  const pill = document.getElementById('header-pill');
-  const ticker = document.getElementById('header-ticker');
   const onScroll = () => {
     const s = window.scrollY;
     const max = document.body.scrollHeight - window.innerHeight;
     const pct = Math.max(0, Math.min(1, s / Math.max(1, max)));
     if (progress) progress.style.transform = `scaleX(${pct})`;
-    if (s > 40) {
-      pill?.classList.add('!py-2', 'shadow-lg');
-      ticker?.classList.remove('opacity-0', '-translate-y-1');
-      ticker?.classList.add('opacity-100', 'translate-y-0');
-    } else {
-      pill?.classList.remove('!py-2', 'shadow-lg');
-      ticker?.classList.add('opacity-0', '-translate-y-1');
-      ticker?.classList.remove('opacity-100', 'translate-y-0');
-    }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
