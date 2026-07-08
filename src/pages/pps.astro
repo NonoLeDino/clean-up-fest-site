@@ -1,0 +1,107 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+---
+
+<BaseLayout title="Plan de Prévention Sécurité" description="Dispositif de sécurité et règles de participation au Clean Up Fest.">
+  <PageHero
+    eyebrow="PPS · Sécurité"
+    title="Plan de Prévention Sécurité."
+    desc="Ce dispositif garantit le bon déroulement de l'événement. Sa lecture est obligatoire à l'inscription."
+    photo="/media/photos/ai/volunteers-team-lille.jpg"
+    ratio="video"
+  />
+
+  <section class="container-page py-16 lg:py-24">
+    <div class="grid md:grid-cols-12 gap-8">
+      <div class="md:col-span-4 md:sticky md:top-24 self-start">
+        <span class="eyebrow">Sommaire</span>
+        <ul class="mt-4 space-y-2 text-sm">
+          {[
+            { id: 'obj', label: '01 · Objet du PPS' },
+            { id: 'org', label: '02 · Organisation' },
+            { id: 'risk', label: '03 · Risques identifiés' },
+            { id: 'mes', label: '04 · Mesures préventives' },
+            { id: 'urg', label: '05 · Conduite en cas d\'urgence' },
+            { id: 'eng', label: '06 · Engagement participant' },
+          ].map((s) => (
+            <li><a href={`#${s.id}`} class="link-anim text-ink hover:text-accent">{s.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="md:col-span-8 prose-content space-y-10">
+        <section id="obj">
+          <h2 class="!text-2xl mb-3">01 · Objet du PPS</h2>
+          <p class="text-ink-muted leading-relaxed">
+            Le présent Plan de Prévention Sécurité (PPS) définit les mesures mises en place par l'organisation
+            du Clean Up Fest pour assurer la sécurité des participants, bénévoles, prestataires et tiers
+            durant la journée du 19 septembre 2026 sur le parcours Grand Place → Citadelle de Lille.
+          </p>
+        </section>
+
+        <section id="org">
+          <h2 class="!text-2xl mb-3">02 · Organisation</h2>
+          <ul class="space-y-2 text-ink-muted">
+            <li>• <strong class="text-ink">Organisateur</strong> : World Cleanup Day France, en partenariat avec la Ville de Lille et la MEL.</li>
+            <li>• <strong class="text-ink">Encadrement</strong> : 30 bénévoles briefés, identifiés par gilets fluo verts.</li>
+            <li>• <strong class="text-ink">Coordinateur sécurité</strong> : joignable sur le 03 20 74 12 34 (jour J).</li>
+            <li>• <strong class="text-ink">Poste médical</strong> : sur place à la Citadelle, tenu par la Croix-Rouge.</li>
+          </ul>
+        </section>
+
+        <section id="risk">
+          <h2 class="!text-2xl mb-3">03 · Risques identifiés</h2>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {[
+              { titre: 'Chaleur / déshydratation', desc: 'Ravitaillement eau tous les 3 km.' },
+              { titre: 'Circulation urbaine', desc: 'Parcours partiellement fermé, signaleurs bénévoles.' },
+              { titre: 'Blessure légère', desc: 'Kit premiers soins à chaque étape.' },
+              { titre: 'Contact déchet coupant', desc: 'Gants renforcés fournis obligatoires.' },
+            ].map((r) => (
+              <div class="card p-4">
+                <h4 class="font-semibold text-ink text-sm">{r.titre}</h4>
+                <p class="text-xs text-ink-muted mt-1">{r.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="mes">
+          <h2 class="!text-2xl mb-3">04 · Mesures préventives</h2>
+          <ul class="space-y-2 text-ink-muted">
+            <li>✓ Kit fourni : sac, gants renforcés, gilet réfléchissant, dossard nominatif</li>
+            <li>✓ Briefing obligatoire à 9h30 sur la Grand Place</li>
+            <li>✓ Interdiction de ramasser tout objet suspect (seringue, verre brisé de grande taille) — signaler à un encadrant</li>
+            <li>✓ Marche en équipe (min. 2 personnes) recommandée</li>
+            <li>✓ Chaussures fermées obligatoires</li>
+          </ul>
+        </section>
+
+        <section id="urg">
+          <h2 class="!text-2xl mb-3">05 · Conduite en cas d'urgence</h2>
+          <div class="bg-accent-soft border-l-4 border-accent p-4 rounded-r-lg">
+            <p class="font-semibold text-accent-dark">Numéros utiles :</p>
+            <ul class="mt-2 space-y-1 text-sm text-ink">
+              <li>• <strong>SAMU</strong> : 15</li>
+              <li>• <strong>Police</strong> : 17</li>
+              <li>• <strong>Pompiers</strong> : 18</li>
+              <li>• <strong>Numéro européen</strong> : 112</li>
+              <li>• <strong>Coordinateur sécurité Clean Up Fest</strong> : 03 20 74 12 34</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="eng">
+          <h2 class="!text-2xl mb-3">06 · Engagement participant</h2>
+          <p class="text-ink-muted leading-relaxed mb-4">
+            Par ma participation, je m'engage à respecter le présent PPS, les consignes des encadrants,
+            et à ne pas mettre en danger ma sécurité ou celle des autres. Je certifie être en état
+            physique compatible avec la formule choisie (marche 10 km ou course 10 km).
+          </p>
+          <a href="/inscription" class="btn btn-primary">J'ai lu, je m'inscris</a>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -2,53 +2,56 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
 import Marquee from '@/components/Marquee.astro';
-import Manifesto from '@/components/Manifesto.astro';
+import KpiBlock from '@/components/KpiBlock.astro';
 import UniversGrid from '@/components/UniversGrid.astro';
 import GoogleMap from '@/components/GoogleMap.astro';
 import Programme from '@/components/Programme.astro';
 import Aftermovie from '@/components/Aftermovie.astro';
-import KpiBlock from '@/components/KpiBlock.astro';
-import TchaoMegot from '@/components/TchaoMegot.astro';
-import Testimonials from '@/components/Testimonials.astro';
 import AudienceCards from '@/components/AudienceCards.astro';
-import PracticalInfo from '@/components/PracticalInfo.astro';
-import Faq from '@/components/Faq.astro';
-import NewsGrid from '@/components/NewsGrid.astro';
-import Press from '@/components/Press.astro';
-import Gallery from '@/components/Gallery.astro';
 import PartnersRow from '@/components/PartnersRow.astro';
-import InstagramWall from '@/components/InstagramWall.astro';
+import Faq from '@/components/Faq.astro';
 import Contact from '@/components/Contact.astro';
 import RevealScript from '@/components/RevealScript.astro';
 ---
 
 <BaseLayout>
+  <!-- 1. Comprendre l'événement -->
   <Hero />
   <Marquee variant="bg" size="md" items={[
-    'Clean Up Fest',
     '19.09.26 · Lille',
     'World Cleanup Day',
     'Marche gratuite',
-    'Course solidaire',
-    'DJ set all day',
+    'Course solidaire · 20 €',
+    'DJ à vélo',
     'Bière offerte',
   ]} />
-  <Manifesto />
-  <UniversGrid />
-  <GoogleMap />
-  <Programme />
-  <Aftermovie youtubeId="wLQMc32ttX8" />
+
+  <!-- 2. Preuve sociale immédiate (KPIs remontés) -->
   <KpiBlock />
-  <TchaoMegot />
-  <Testimonials />
+
+  <!-- 3. Concept en un coup d'œil -->
+  <UniversGrid />
+
+  <!-- 4. Voir le parcours (map + formule fusionnées) -->
+  <GoogleMap />
+
+  <!-- 5. Programme de la journée -->
+  <Programme />
+
+  <!-- 6. Vidéo (confiance) -->
+  <Aftermovie />
+
+  <!-- 7. Vous êtes ? redirige vers /participer -->
   <AudienceCards />
-  <PracticalInfo />
-  <Gallery preview />
-  <NewsGrid />
-  <Press />
-  <PartnersRow />
-  <InstagramWall />
+
+  <!-- 8. Partenaires (visibles) -->
+  <PartnersRow compact />
+
+  <!-- 9. FAQ courte -->
   <Faq />
+
+  <!-- 10. Contact -->
   <Contact />
+
   <RevealScript />
 </BaseLayout>

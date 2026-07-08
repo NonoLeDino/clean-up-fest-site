@@ -10,7 +10,7 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
 >
   <div class="grid sm:grid-cols-2 gap-5">
     <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-semibold text-ink">Nom</span>
+      <span class="text-sm font-semibold text-ink">Nom <span class="text-accent">*</span></span>
       <input
         type="text"
         name="nom"
@@ -20,7 +20,7 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
       />
     </label>
     <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-semibold text-ink">Email</span>
+      <span class="text-sm font-semibold text-ink">Email <span class="text-accent">*</span></span>
       <input
         type="email"
         name="email"
@@ -33,7 +33,36 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
 
   <div class="grid sm:grid-cols-2 gap-5">
     <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-semibold text-ink">Profil</span>
+      <span class="text-sm font-semibold text-ink">Téléphone <span class="text-accent">*</span></span>
+      <input
+        type="tel"
+        name="telephone"
+        required
+        pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$"
+        placeholder="06 12 34 56 78"
+        autocomplete="tel"
+        class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+      />
+    </label>
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Code postal <span class="text-accent">*</span></span>
+      <input
+        type="text"
+        name="codePostal"
+        required
+        pattern="^\d{5}$"
+        maxlength="5"
+        inputmode="numeric"
+        placeholder="59000"
+        autocomplete="postal-code"
+        class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+      />
+    </label>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-5">
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Profil <span class="text-accent">*</span></span>
       <select
         name="profil"
         required
@@ -47,7 +76,7 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
     </label>
 
     <label class="flex flex-col gap-1.5">
-      <span class="text-sm font-semibold text-ink">Formule</span>
+      <span class="text-sm font-semibold text-ink">Formule <span class="text-accent">*</span></span>
       <select
         name="formule"
         required
@@ -62,7 +91,7 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
   </div>
 
   <label class="flex flex-col gap-1.5 max-w-[240px]">
-    <span class="text-sm font-semibold text-ink">Nombre de participants</span>
+    <span class="text-sm font-semibold text-ink">Nombre de participants <span class="text-accent">*</span></span>
     <input
       type="number"
       name="participants"
@@ -83,24 +112,140 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
     ></textarea>
   </label>
 
-  <div class="flex items-center gap-4 flex-wrap">
-    <button type="submit" class="btn btn-primary">Envoyer mon inscription</button>
-    <span class="text-xs text-ink-muted">
-      Vos données ne sont pas envoyées tant que l'endpoint n'est pas configuré.
-    </span>
+  <!-- PPS conditionnel : uniquement si course sélectionnée -->
+  <div id="pps-block" class="hidden border border-accent/25 bg-accent-soft/40 rounded-lg p-5 space-y-4">
+    <div class="flex items-start gap-3">
+      <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <div>
+        <div class="font-semibold text-ink text-sm">Course · Plan de Prévention Sécurité (PPS)</div>
+        <p class="text-xs text-ink-muted mt-1 leading-relaxed">
+          Obligatoire pour la course chronométrée. Vous pouvez soit joindre le PPS signé si vous l'avez déjà,
+          soit consulter et accepter le PPS en ligne.
+        </p>
+      </div>
+    </div>
+
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Joindre le PPS signé (PDF, optionnel)</span>
+      <input
+        type="file"
+        name="ppsFile"
+        accept="application/pdf"
+        class="text-sm text-ink file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:bg-primary file:text-white file:font-semibold file:cursor-pointer hover:file:bg-primary-dark"
+      />
+      <span class="text-xs text-ink-muted">
+        Vous n'avez pas encore le PPS ?
+        <a href="/pps" target="_blank" rel="noopener noreferrer" class="link-anim font-semibold text-primary">Consulter le PPS ↗</a>
+        · <a href="/pps.pdf" class="link-anim font-semibold text-primary">Télécharger le PDF ↓</a>
+      </span>
+    </label>
+
+    <label class="flex items-start gap-3 text-sm pt-2 border-t border-accent/20">
+      <input
+        type="checkbox"
+        name="ppsAccept"
+        data-required-if-course
+        class="w-5 h-5 mt-0.5 rounded border-border accent-accent shrink-0"
+      />
+      <span>
+        Je certifie avoir lu et accepté le <a href="/pps" target="_blank" rel="noopener noreferrer" class="link-anim font-semibold text-primary">PPS</a>
+        et être en état physique compatible avec la course 10 km chronométrée. <span class="text-accent">*</span>
+      </span>
+    </label>
   </div>
 
-  <div id="form-success" class="hidden card p-5 bg-primary-soft border-primary/30">
-    <p class="font-semibold text-primary">Merci ! Votre pré-inscription est enregistrée.</p>
-    <p class="text-sm text-ink-muted mt-1">
-      Nous reviendrons vers vous par email dès que l'inscription officielle sera ouverte.
-    </p>
+  <!-- Règlement + RGPD (toujours) -->
+  <label class="flex items-start gap-3 text-sm border-t border-border pt-5">
+    <input
+      type="checkbox"
+      name="reglement"
+      required
+      class="w-5 h-5 mt-0.5 rounded border-border accent-accent shrink-0"
+    />
+    <span>
+      J'accepte le <a href="/reglement" class="link-anim font-semibold text-primary">règlement de l'événement</a>
+      et consens au traitement de mes données pour la gestion de mon inscription. <span class="text-accent">*</span>
+    </span>
+  </label>
+
+  <div class="flex items-center gap-4 flex-wrap pt-2">
+    <button type="submit" class="btn btn-primary">Envoyer mon inscription</button>
+    <span class="text-xs text-ink-muted">
+      Vos données ne quittent votre navigateur qu'à la validation de l'endpoint (MVP).
+    </span>
   </div>
 </form>
 
+<!-- Pop-up de confirmation -->
+<div id="success-modal" class="hidden fixed inset-0 z-[70] bg-black/70 backdrop-blur items-center justify-center p-4">
+  <div class="relative bg-white rounded-lg max-w-lg w-full p-8 sm:p-10 text-center shadow-2xl">
+    <button type="button" id="success-close" class="absolute top-4 right-4 w-9 h-9 rounded-full border border-border hover:bg-cream" aria-label="Fermer">
+      <svg class="w-4 h-4 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-5">
+      <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+
+    <span class="chip chip-green">Inscription enregistrée</span>
+    <h3 class="mt-4 text-2xl font-display font-semibold text-ink">Merci <span id="success-nom" class="text-accent">!</span></h3>
+    <p class="mt-3 text-ink-muted leading-relaxed">
+      On a bien reçu ta demande d'inscription. Un email de confirmation arrive dans ta boîte
+      <span id="success-email" class="font-mono text-ink"></span>
+      dans les prochaines minutes.
+    </p>
+
+    <div class="mt-6 grid gap-2 text-sm text-left bg-cream rounded-lg p-4">
+      <div class="font-semibold text-ink mb-1">Prochaines étapes :</div>
+      <div class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-accent text-white font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">1</span> Vérifie ton email (spam inclus)</div>
+      <div class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-accent text-white font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">2</span> Note la date : <strong>SAM 19.09.26 · 10h</strong></div>
+      <div class="flex items-start gap-2"><span class="w-5 h-5 rounded-full bg-accent text-white font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">3</span> RDV Grand Place, retrait kit dès 9h</div>
+    </div>
+
+    <div class="mt-6 flex flex-wrap gap-3 justify-center">
+      <a href="/" class="btn btn-outline !py-2 text-sm">Retour à l'accueil</a>
+      <button type="button" id="success-share" class="btn btn-primary !py-2 text-sm">Partager l'événement</button>
+    </div>
+  </div>
+</div>
+
 <script>
   const form = document.getElementById('inscription-form') as HTMLFormElement | null;
-  const success = document.getElementById('form-success');
+  const modal = document.getElementById('success-modal');
+  const closeBtn = document.getElementById('success-close');
+  const shareBtn = document.getElementById('success-share');
+  const successNom = document.getElementById('success-nom');
+  const successEmail = document.getElementById('success-email');
+
+  const openModal = () => {
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeModal = () => {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  };
+
+  // PPS conditionnel : affichage seulement si course sélectionnée
+  const ppsBlock = document.getElementById('pps-block');
+  const formuleSelect = form?.querySelector<HTMLSelectElement>('select[name="formule"]');
+  const ppsAccept = form?.querySelector<HTMLInputElement>('input[name="ppsAccept"]');
+  const syncPPS = () => {
+    const isCourse = formuleSelect?.value === 'course';
+    ppsBlock?.classList.toggle('hidden', !isCourse);
+    if (ppsAccept) ppsAccept.required = !!isCourse;
+  };
+  formuleSelect?.addEventListener('change', syncPPS);
 
   form?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -108,22 +253,44 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
       form.reportValidity();
       return;
     }
+    const data = new FormData(form);
+    const nom = String(data.get('nom') || '').split(' ')[0];
+    const email = String(data.get('email') || '');
+    if (successNom) successNom.textContent = nom || '!';
+    if (successEmail) successEmail.textContent = email;
+
     const endpoint = form.getAttribute('data-endpoint');
     if (!endpoint || endpoint === '[À REMPLIR]') {
-      form.classList.add('opacity-60', 'pointer-events-none');
-      success?.classList.remove('hidden');
+      // MVP : pas d'envoi réel, on montre la popup
+      form.reset();
+      openModal();
       return;
     }
-    // Quand l'endpoint sera configuré, décommenter :
-    // const data = new FormData(form);
-    // fetch(endpoint, { method: 'POST', body: data }).then(() => success?.classList.remove('hidden'));
+    // Quand endpoint configuré, décommenter :
+    // fetch(endpoint, { method: 'POST', body: data }).then(() => { form.reset(); openModal(); });
   });
 
-  // Pré-remplissage depuis ?formule=marche|course
+  closeBtn?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  shareBtn?.addEventListener('click', async () => {
+    if (navigator.share) {
+      try { await navigator.share({ title: 'Clean Up Fest — 19.09.26', text: "J'y serai. Rejoins-moi.", url: window.location.origin }); } catch {}
+    } else {
+      await navigator.clipboard.writeText(window.location.origin);
+      shareBtn.textContent = 'Lien copié !';
+      setTimeout(() => (shareBtn.textContent = 'Partager l\'événement'), 1800);
+    }
+  });
+
+  // Pré-remplissage depuis URL params
   const params = new URLSearchParams(location.search);
   const f = params.get('formule');
-  if (f && form) {
-    const sel = form.querySelector<HTMLSelectElement>('select[name="formule"]');
-    if (sel) sel.value = f;
+  const p = params.get('profil');
+  if (form) {
+    if (f) { const sel = form.querySelector<HTMLSelectElement>('select[name="formule"]'); if (sel) sel.value = f; }
+    if (p) { const sel = form.querySelector<HTMLSelectElement>('select[name="profil"]');  if (sel) sel.value = p; }
+    syncPPS();
   }
 </script>

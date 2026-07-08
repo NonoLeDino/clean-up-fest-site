@@ -18,7 +18,7 @@ export const site = {
     "Une marche de 10 km gratuite pour ramasser les déchets ou une course chronométrée au profit du World CleanUp Day. " +
     "Tout le week-end : DJ sets en continu, food trucks locaux et une bière offerte à l'arrivée !",
   manifeste:
-    "S'engager en s'ambiançant. Marcher 10 km pour nettoyer, ou courir pour reverser 25 €. " +
+    "S'engager en s'ambiançant. Marcher 10 km pour nettoyer, ou courir pour reverser 20 €. " +
     "À l'arrivée : DJ, food, bière offerte.",
   accroche: 'Rejoignez le mouvement !',
   meta: {
@@ -60,7 +60,7 @@ export const formules: Formule[] = [
   {
     id: 'course',
     titre: 'Course',
-    prix: '25 € solidaires',
+    prix: '20 € solidaires',
     desc: "Courez pendant l'événement au rythme d'un DJ set. 100 % de l'inscription est reversée à World Cleanup Day.",
     bullets: [
       'Dossard officiel + chronométrage',
@@ -84,7 +84,7 @@ export type Univers = {
 export const univers: Univers[] = [
   { id: 'clean',     titre: 'Clean',        desc: 'Ramassage collectif des déchets dans les rues de Lille, 10 km à travers la ville.', couleur: 'green', icon: 'leaf',   photo: '/media/photos/ai/volunteers-team-lille.jpg' },
   { id: 'music',     titre: 'Music',        desc: "Un DJ à vélo qui vous suit toute la journée. La cadence à votre rythme.",           couleur: 'pink',  icon: 'music',  photo: '/media/photos/ai/dj-on-bike.jpg' },
-  { id: 'run',       titre: 'Run',          desc: "Une course 10 km chronométrée. 100 % de vos 25 € reversés à l'association.",         couleur: 'dark',  icon: 'run',    photo: '/media/photos/ai/runners-lille-street.jpg' },
+  { id: 'run',       titre: 'Run',          desc: "Une course 10 km chronométrée. 100 % de vos 20 € reversés à l'association.",         couleur: 'dark',  icon: 'run',    photo: '/media/photos/ai/runners-lille-street.jpg' },
   { id: 'food',      titre: 'Food & Drinks',desc: "Foodtrucks locaux et une bière artisanale offerte à l'arrivée.",                    couleur: 'cream', icon: 'cup',    photo: '/media/photos/ai/foodtruck-festival.jpg' },
   { id: 'talks',     titre: 'Talks',        desc: 'Conférences éclair sur le zéro-déchet, le mégot, la mode circulaire.',              couleur: 'green', icon: 'mic',    photo: '/media/photos/ai/briefing-volunteers.jpg' },
   { id: 'community', titre: 'Community',    desc: 'Écoles, entreprises, collectivités, particuliers. Ensemble en même temps.',         couleur: 'pink',  icon: 'people', photo: '/media/photos/ai/cleanup-crowd-lille.jpg' },
@@ -165,32 +165,32 @@ export type Audience = {
 
 export const audiences: Audience[] = [
   {
-    id: 'ecole',
-    titre: 'École',
+    id: 'particulier',
+    titre: 'Je viens seul·e / en famille',
     pitch:
-      "Fédérez vos élèves autour d'une action concrète. Journée banalisée, bonne humeur garantie.",
-    cta: "Inscrire mon école",
+      "Inscription individuelle : venez marcher ou courir en solo, entre amis ou en famille. Enfants bienvenus (+8 ans, accompagnés).",
+    cta: "M'inscrire (particulier)",
+  },
+  {
+    id: 'ecole',
+    titre: "Je représente une école",
+    pitch:
+      "Vous êtes prof ou surveillant·e : venez avec votre classe (élèves +10 ans). Kit pédagogique fourni, autorisation parents à télécharger.",
+    cta: "Inscrire ma classe",
   },
   {
     id: 'entreprise',
-    titre: 'Entreprise',
+    titre: "Je représente une entreprise",
     pitch:
-      "Organisez un événement solidaire avec vos salariés, dans une ambiance festival.",
-    cta: "Inscrire mon entreprise",
+      "RH, CSE ou RSE : organisez une journée team building solidaire pour vos salariés. Pack 10 à 200 personnes, bilan carbone remis.",
+    cta: "Inscrire mon équipe",
   },
   {
     id: 'collectivite',
-    titre: 'Collectivité',
+    titre: "Je représente une collectivité",
     pitch:
-      "Impliquez vos administrés dans un événement civique fédérateur au cœur de Lille.",
+      "Mairies, associations, MJC : embarquez vos habitants dans un événement civique. Convention de partenariat possible.",
     cta: "Devenir partenaire",
-  },
-  {
-    id: 'particulier',
-    titre: 'Particulier',
-    pitch:
-      "Agissez pour une ville plus propre — en marchant ou en courant, entre potes et en musique.",
-    cta: "Je m'inscris",
   },
 ];
 
@@ -310,7 +310,7 @@ export const routes: Route[] = [
     distance: '10 km',
     duree: '~50 min',
     denivele: '+42 m',
-    prix: '25 €',
+    prix: '20 €',
     couleur: '#FF007F',
     path: 'M 15 78 C 30 82, 45 70, 55 78 S 78 82, 82 66 S 60 52, 50 50 S 30 42, 32 30 S 55 28, 68 34 S 82 26, 88 22',
     points: [
@@ -344,7 +344,8 @@ export const pratique = [
   { titre: 'Accès',     valeur: 'Métro Rihour',             sub: 'Ligne 1 · Vélib\' · Parkings à proximité'             , icon: 'metro' },
   { titre: 'Kit',       valeur: 'Sacs, gants, dossards',    sub: 'Fournis sur place, retrait dès 9h00'                  , icon: 'kit' },
   { titre: 'Restauration', valeur: 'Foodtrucks locaux',     sub: 'Options veggie & sans-gluten · bière offerte'         , icon: 'food' },
-  { titre: 'Contact',   valeur: 'hello@cleanupfest.fr',     sub: 'Réponse sous 48h'                                     , icon: 'mail' },
+  { titre: 'Contact',   valeur: '03 20 74 12 34',           sub: 'hello@cleanupfest.fr · Réponse sous 48h'              , icon: 'mail' },
+  { titre: 'Adresse',   valeur: '12 rue Léon Trulin',       sub: '59800 Lille · Sur RDV uniquement'                     , icon: 'map' },
 ];
 
 /* ============ STORYBOARD ============ */
@@ -360,8 +361,8 @@ export const storyboard: string[] = [
 
 /* ============ NAV ============ */
 export const nav = [
-  { label: 'Programme',   href: '/#programme' },
   { label: 'Participer',  href: '/participer' },
+  { label: 'À propos',    href: '/a-propos' },
   { label: 'Galerie',     href: '/galerie' },
   { label: 'Partenaires', href: '/partenaires' },
   { label: 'Contact',     href: '/#contact' },

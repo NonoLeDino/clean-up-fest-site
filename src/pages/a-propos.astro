@@ -1,0 +1,24 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Manifesto from '@/components/Manifesto.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import NewsGrid from '@/components/NewsGrid.astro';
+import InstagramWall from '@/components/InstagramWall.astro';
+import RevealScript from '@/components/RevealScript.astro';
+---
+
+<BaseLayout title="À propos" description="Notre histoire, notre équipe, notre engagement. Le manifeste du Clean Up Fest.">
+  <PageHero
+    eyebrow="À propos"
+    title="Notre histoire, notre engagement."
+    desc="Le Clean Up Fest est né d'une idée simple : rassembler les habitants autour d'une action concrète pour la ville."
+    photo="/media/photos/ai/cleanup-crowd-lille.jpg"
+  />
+
+  <Manifesto />
+  <Testimonials />
+  <NewsGrid />
+  <InstagramWall />
+  <RevealScript />
+</BaseLayout>
