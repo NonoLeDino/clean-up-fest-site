@@ -1,0 +1,129 @@
+---
+import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
+---
+
+<form
+  id="inscription-form"
+  class="grid gap-5 max-w-2xl"
+  novalidate
+  data-endpoint={FORM_ENDPOINT}
+>
+  <div class="grid sm:grid-cols-2 gap-5">
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Nom</span>
+      <input
+        type="text"
+        name="nom"
+        required
+        autocomplete="name"
+        class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+      />
+    </label>
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Email</span>
+      <input
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+      />
+    </label>
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-5">
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Profil</span>
+      <select
+        name="profil"
+        required
+        class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+      >
+        <option value="">— Sélectionnez —</option>
+        {audiences.map((a) => (
+          <option value={a.id}>{a.titre}</option>
+        ))}
+      </select>
+    </label>
+
+    <label class="flex flex-col gap-1.5">
+      <span class="text-sm font-semibold text-ink">Formule</span>
+      <select
+        name="formule"
+        required
+        class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+      >
+        <option value="">— Sélectionnez —</option>
+        {formules.map((f) => (
+          <option value={f.id}>{f.titre} — {f.prix}</option>
+        ))}
+      </select>
+    </label>
+  </div>
+
+  <label class="flex flex-col gap-1.5 max-w-[240px]">
+    <span class="text-sm font-semibold text-ink">Nombre de participants</span>
+    <input
+      type="number"
+      name="participants"
+      min="1"
+      max="500"
+      value="1"
+      required
+      class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+    />
+  </label>
+
+  <label class="flex flex-col gap-1.5">
+    <span class="text-sm font-semibold text-ink">Message (optionnel)</span>
+    <textarea
+      name="message"
+      rows="4"
+      class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none resize-y"
+    ></textarea>
+  </label>
+
+  <div class="flex items-center gap-4 flex-wrap">
+    <button type="submit" class="btn btn-primary">Envoyer mon inscription</button>
+    <span class="text-xs text-ink-muted">
+      Vos données ne sont pas envoyées tant que l'endpoint n'est pas configuré.
+    </span>
+  </div>
+
+  <div id="form-success" class="hidden card p-5 bg-primary-soft border-primary/30">
+    <p class="font-semibold text-primary">Merci ! Votre pré-inscription est enregistrée.</p>
+    <p class="text-sm text-ink-muted mt-1">
+      Nous reviendrons vers vous par email dès que l'inscription officielle sera ouverte.
+    </p>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById('inscription-form') as HTMLFormElement | null;
+  const success = document.getElementById('form-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    const endpoint = form.getAttribute('data-endpoint');
+    if (!endpoint || endpoint === '[À REMPLIR]') {
+      form.classList.add('opacity-60', 'pointer-events-none');
+      success?.classList.remove('hidden');
+      return;
+    }
+    // Quand l'endpoint sera configuré, décommenter :
+    // const data = new FormData(form);
+    // fetch(endpoint, { method: 'POST', body: data }).then(() => success?.classList.remove('hidden'));
+  });
+
+  // Pré-remplissage depuis ?formule=marche|course
+  const params = new URLSearchParams(location.search);
+  const f = params.get('formule');
+  if (f && form) {
+    const sel = form.querySelector<HTMLSelectElement>('select[name="formule"]');
+    if (sel) sel.value = f;
+  }
+</script>

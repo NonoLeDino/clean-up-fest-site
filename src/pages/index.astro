@@ -1,0 +1,52 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import Marquee from '@/components/Marquee.astro';
+import Manifesto from '@/components/Manifesto.astro';
+import UniversGrid from '@/components/UniversGrid.astro';
+import InteractiveMap from '@/components/InteractiveMap.astro';
+import Programme from '@/components/Programme.astro';
+import Aftermovie from '@/components/Aftermovie.astro';
+import KpiBlock from '@/components/KpiBlock.astro';
+import Testimonials from '@/components/Testimonials.astro';
+import AudienceCards from '@/components/AudienceCards.astro';
+import PracticalInfo from '@/components/PracticalInfo.astro';
+import Faq from '@/components/Faq.astro';
+import NewsGrid from '@/components/NewsGrid.astro';
+import Press from '@/components/Press.astro';
+import Gallery from '@/components/Gallery.astro';
+import PartnersRow from '@/components/PartnersRow.astro';
+import InstagramWall from '@/components/InstagramWall.astro';
+import Contact from '@/components/Contact.astro';
+import RevealScript from '@/components/RevealScript.astro';
+---
+
+<BaseLayout>
+  <Hero />
+  <Marquee variant="bg" size="md" items={[
+    'Clean Up Fest',
+    '20.09.26 · Lille',
+    'World Cleanup Day',
+    'Marche gratuite',
+    'Course solidaire',
+    'DJ set all day',
+    'Bière offerte',
+  ]} />
+  <Manifesto />
+  <UniversGrid />
+  <InteractiveMap />
+  <Programme />
+  <Aftermovie youtubeId="wLQMc32ttX8" />
+  <KpiBlock />
+  <Testimonials />
+  <AudienceCards />
+  <PracticalInfo />
+  <Gallery preview />
+  <Faq />
+  <NewsGrid />
+  <Press />
+  <PartnersRow />
+  <InstagramWall />
+  <Contact />
+  <RevealScript />
+</BaseLayout>

@@ -1,0 +1,136 @@
+---
+import Logo from './Logo.astro';
+import { nav, site } from '@/data/site';
+---
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress" aria-hidden="true"
+     class="fixed top-0 left-0 right-0 z-50 h-[3px] bg-accent scale-x-0 origin-left transition-transform duration-100"
+     style="transform-origin: left;"></div>
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-500 pt-3 sm:pt-4">
+  <div class="container-page">
+    <!-- Micro ticker (visible on scroll) -->
+    <div id="header-ticker" class="hidden sm:block max-w-max mx-auto mb-2 opacity-0 -translate-y-1 transition-all duration-500">
+      <div class="bg-ink text-white text-[10px] uppercase tracking-[0.24em] font-mono px-4 py-1.5 rounded-full flex items-center gap-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent pulse-soft"></span>
+        <span>DIM 20.09.26 · Grand Place → Citadelle · Inscriptions ouvertes</span>
+      </div>
+    </div>
+
+    <div id="header-pill" class="flex items-center justify-between gap-4 bg-white/95 backdrop-blur-xl border border-border rounded-full pl-4 pr-2 sm:pl-5 sm:pr-3 py-2 sm:py-2.5 shadow-card transition-all duration-500">
+      <a href="/" class="flex items-center gap-2 shrink-0 group" aria-label="Clean Up Fest — Accueil">
+        <Logo variant="green" size="sm" />
+        <div class="hidden sm:flex flex-col leading-none font-mono text-[9px] text-ink-muted uppercase tracking-[0.18em] pl-2 border-l border-border ml-1">
+          <span>Édition</span>
+          <span class="text-ink font-semibold mt-0.5">2026</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 min-w-0" aria-label="Navigation principale">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class="group relative px-3 py-2 rounded-full text-sm font-semibold text-ink transition-colors cursor-pointer overflow-hidden"
+          >
+            <span class="relative z-10 transition-colors group-hover:text-white">{item.label}</span>
+            <span class="absolute inset-0 bg-ink rounded-full -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+          </a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <!-- Live status + countdown badge -->
+        <div class="hidden md:flex items-center gap-2.5 text-[10px] font-mono uppercase tracking-[0.16em] font-semibold text-ink-muted border-r border-border pr-3 mr-1">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary-glow pulse-soft"></span>
+            Live
+          </span>
+          <span class="flex flex-col items-center bg-ink text-white rounded-md px-2 py-1 leading-none">
+            <span class="text-[8px] opacity-70">J-</span>
+            <span id="header-jminus" class="tabular-nums text-xs mt-0.5">—</span>
+          </span>
+        </div>
+
+        <!-- Ticket CTA with animated ring -->
+        <a href="/inscription" class="relative btn btn-primary !py-2.5 !px-5 text-sm group overflow-hidden">
+          <span class="relative z-10 flex items-center gap-1.5">
+            Get your ticket
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </span>
+          <span aria-hidden="true" class="absolute inset-0 rounded-full ring-2 ring-accent opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-500"></span>
+        </a>
+
+        <button
+          type="button"
+          id="mobile-menu-btn"
+          aria-label="Ouvrir le menu"
+          aria-expanded="false"
+          class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-border cursor-pointer"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden container-page pb-4 mt-2">
+    <div class="bg-white border border-border rounded-lg overflow-hidden shadow-card">
+      <nav class="flex flex-col divide-y divide-border" aria-label="Navigation mobile">
+        {nav.map((item) => (
+          <a href={item.href} class="px-5 py-4 text-base font-semibold text-ink hover:bg-primary-soft cursor-pointer">{item.label}</a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="h-[92px]"></div>
+
+<script is:inline define:vars={{ target: site.dateEvent }}>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Scroll progress bar
+  const progress = document.getElementById('scroll-progress');
+  const pill = document.getElementById('header-pill');
+  const ticker = document.getElementById('header-ticker');
+  const onScroll = () => {
+    const s = window.scrollY;
+    const max = document.body.scrollHeight - window.innerHeight;
+    const pct = Math.max(0, Math.min(1, s / Math.max(1, max)));
+    if (progress) progress.style.transform = `scaleX(${pct})`;
+    if (s > 40) {
+      pill?.classList.add('!py-2', 'shadow-lg');
+      ticker?.classList.remove('opacity-0', '-translate-y-1');
+      ticker?.classList.add('opacity-100', 'translate-y-0');
+    } else {
+      pill?.classList.remove('!py-2', 'shadow-lg');
+      ticker?.classList.add('opacity-0', '-translate-y-1');
+      ticker?.classList.remove('opacity-100', 'translate-y-0');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Countdown "J-XX" in header
+  const jEl = document.getElementById('header-jminus');
+  if (jEl && target && target !== '[À REMPLIR : YYYY-MM-DDTHH:mm]') {
+    const targetTime = new Date(target).getTime();
+    const update = () => {
+      const diff = targetTime - Date.now();
+      const days = Math.max(0, Math.floor(diff / 86400000));
+      jEl.textContent = String(days);
+    };
+    update();
+    setInterval(update, 60_000);
+  }
+</script>

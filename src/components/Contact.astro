@@ -1,0 +1,99 @@
+---
+import { site, FORM_ENDPOINT } from '@/data/site';
+
+const contactCards = [
+  { titre: 'Écrire à l\'équipe',    valeur: 'hello@cleanupfest.fr',       sub: 'Réponse sous 48h', icon: 'mail'  },
+  { titre: 'Presse & médias',       valeur: 'presse@cleanupfest.fr',      sub: 'Kit presse dispo', icon: 'news'  },
+  { titre: 'Partenariats',          valeur: 'partenaires@cleanupfest.fr', sub: 'Deck sur demande', icon: 'shake' },
+  { titre: 'Adresse',               valeur: '12 rue Léon Trulin, Lille',  sub: 'Sur RDV uniquement',icon: 'pin'   },
+];
+
+const icons: Record<string,string> = {
+  mail:  'M3 8l9 6 9-6 M3 7h18v13H3z',
+  news:  'M4 4h16v16H4z M8 8h8 M8 12h8 M8 16h5',
+  shake: 'M8 12l3-3 4 4 6-6 M12 12l3 3 6-6',
+  pin:   'M12 21c-4-3-8-6-8-11a8 8 0 1116 0c0 5-4 8-8 11z M12 10a2 2 0 100-4 2 2 0 000 4z',
+};
+---
+
+<section id="contact" class="relative isolate overflow-hidden">
+  <img src="/media/photos/festival-lights.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy" aria-hidden="true"/>
+  <div class="absolute inset-0 bg-surface-dark/80"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-dark/60 via-black/60 to-accent-dark/40 mix-blend-multiply"></div>
+
+  <div class="relative container-page py-24 lg:py-32 text-white">
+    <div class="grid md:grid-cols-12 gap-10 items-start">
+
+      <!-- Left : big statement + newsletter -->
+      <div class="md:col-span-6 flex flex-col gap-8">
+        <div>
+          <span class="chip !bg-white/15 !text-white border border-white/25">Nous parler</span>
+          <h2 class="mt-4 text-white leading-[0.95]">
+            Une idée ? Une envie ?<br/>
+            <span class="text-accent-glow italic font-normal">Un doute ?</span>
+          </h2>
+          <p class="mt-4 text-white/80 max-w-md text-lg leading-relaxed">
+            L'équipe répond en 48h, sans langue de bois. Presse, partenaires, curieux — la porte est ouverte.
+          </p>
+        </div>
+
+        <form id="newsletter-form" data-endpoint={FORM_ENDPOINT} class="flex flex-col gap-3 max-w-md" novalidate>
+          <label class="text-xs uppercase tracking-widest text-white/70 font-mono">Newsletter · un mail max par mois</label>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="email" name="email" required placeholder="votre@email.fr" autocomplete="email"
+                   class="flex-1 rounded-full bg-white/10 text-white border border-white/25 px-5 py-3 min-h-[48px] outline-none placeholder:text-white/50 focus:border-accent focus:bg-white/15" />
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+          </div>
+          <p id="nl-ok" class="hidden text-sm text-accent-soft">Merci ! On vous tient au courant.</p>
+        </form>
+
+        <!-- Socials -->
+        <div class="pt-6 border-t border-white/15">
+          <div class="text-xs uppercase tracking-widest text-white/60 font-mono mb-4">On se retrouve où ?</div>
+          <div class="flex flex-wrap gap-2">
+            {site.social.map((s) => (
+              <a href={s.href} class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/25 hover:bg-white/20 transition-colors group cursor-pointer">
+                <span class="w-2 h-2 rounded-full bg-accent group-hover:scale-125 transition-transform"></span>
+                <span class="font-semibold text-sm">{s.label}</span>
+                <span class="text-xs text-white/60">{s.handle}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right : contact cards -->
+      <div class="md:col-span-6 grid gap-3">
+        {contactCards.map((c) => (
+          <a href={c.icon === 'mail' || c.icon === 'news' || c.icon === 'shake' ? `mailto:${c.valeur}` : '#'}
+             class="group relative rounded-lg overflow-hidden bg-white/8 border border-white/15 hover:bg-white/15 hover:border-white/30 transition-all backdrop-blur p-6 flex items-center gap-5 cursor-pointer">
+            <div class="w-14 h-14 rounded-full bg-accent flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={icons[c.icon]}/>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="eyebrow !text-white/60">{c.titre}</div>
+              <div class="mt-1 font-display text-lg text-white font-semibold truncate">{c.valeur}</div>
+              <div class="text-xs text-white/60">{c.sub}</div>
+            </div>
+            <svg class="w-5 h-5 text-white/40 group-hover:text-accent group-hover:translate-x-1 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('newsletter-form') as HTMLFormElement | null;
+  const ok = document.getElementById('nl-ok');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    form.reset();
+    ok?.classList.remove('hidden');
+  });
+</script>

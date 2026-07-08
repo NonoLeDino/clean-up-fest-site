@@ -1,0 +1,46 @@
+---
+import { pratique } from '@/data/site';
+
+const icons: Record<string, string> = {
+  map:      'M12 21c-4-3-8-6-8-11a8 8 0 1116 0c0 5-4 8-8 11z M12 10a2 2 0 100-4 2 2 0 000 4z',
+  calendar: 'M8 3v4 M16 3v4 M3 9h18 M3 7a2 2 0 012-2h14a2 2 0 012 2v13a2 2 0 01-2 2H5a2 2 0 01-2-2V7z',
+  metro:    'M4 15V7a4 4 0 014-4h8a4 4 0 014 4v8a4 4 0 01-4 4H8a4 4 0 01-4-4z M4 15h16 M8 19l-2 3 M16 19l2 3 M9 12h.01 M15 12h.01',
+  kit:      'M6 3h12l1 4H5l1-4z M4 7h16v13a2 2 0 01-2 2H6a2 2 0 01-2-2V7z M10 12h4',
+  food:     'M17 8h1a4 4 0 010 8h-1 M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z M6 4v2 M10 4v2 M14 4v2',
+  mail:     'M3 8l9 6 9-6 M3 7h18v13H3z',
+};
+---
+
+<section class="section-cream">
+  <div class="container-page py-24">
+    <div class="grid md:grid-cols-12 gap-10 mb-12">
+      <div class="md:col-span-4">
+        <span class="chip chip-green">Infos pratiques</span>
+        <h2 class="mt-4">Tout ce qu'il faut savoir avant de venir.</h2>
+      </div>
+      <div class="md:col-span-8">
+        <p class="text-lg text-ink-muted leading-relaxed">
+          Une journée gratuite pour les marcheurs, payante et solidaire pour les coureurs.
+          Le retrait des kits ouvre à 9h à la Grand Place. Pensez aux chaussures fermées.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-1 sm:grid-cols-2 lg:grid-cols-3 border border-border rounded-lg overflow-hidden bg-white">
+      {pratique.map((p) => (
+        <div class="p-6 sm:p-8 border-b sm:border-r border-border last:border-b-0 flex gap-4">
+          <div class="w-10 h-10 rounded-full bg-primary-soft text-primary flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d={icons[p.icon]}/>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-ink-muted font-semibold">{p.titre}</div>
+            <div class="mt-1 font-display text-xl text-ink">{p.valeur}</div>
+            <div class="mt-0.5 text-sm text-ink-muted">{p.sub}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

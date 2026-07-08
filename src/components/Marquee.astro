@@ -1,0 +1,43 @@
+---
+type Props = {
+  items: string[];
+  variant?: 'dark' | 'green' | 'pink' | 'cream' | 'bg';
+  size?: 'sm' | 'md' | 'lg';
+  slow?: boolean;
+};
+const { items, variant = 'bg', size = 'md', slow = false } = Astro.props;
+const bg = {
+  dark:  'section-dark border-y border-white/10',
+  green: 'section-green',
+  pink:  'section-pink',
+  cream: 'section-cream border-y border-border',
+  bg:    'bg-bg border-y border-border',
+}[variant];
+const txt = {
+  sm: 'text-lg',
+  md: 'text-2xl md:text-4xl',
+  lg: 'text-4xl md:text-6xl',
+}[size];
+const doubled = [...items, ...items, ...items];
+---
+
+<div class={`${bg} py-4 md:py-5 overflow-hidden`}>
+  <div class:list={['marquee', slow && 'marquee-slow']}>
+    <div class="marquee__track" aria-hidden="true">
+      {doubled.map((item) => (
+        <span class:list={['display-condensed', txt]}>
+          {item}
+          <span class="mx-4 opacity-40">✦</span>
+        </span>
+      ))}
+    </div>
+    <div class="marquee__track" aria-hidden="true">
+      {doubled.map((item) => (
+        <span class:list={['display-condensed', txt]}>
+          {item}
+          <span class="mx-4 opacity-40">✦</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+/*
+ * Clean Up Fest — Theme tokens
+ * -------------------------------------------------
+ * Toute la charte (couleurs, typo, radius) est
+ * centralisée ici. Pour changer la charte, éditez
+ * ce fichier uniquement.
+ */
+
+:root {
+  /* ---- COULEURS ---- */
+  --color-primary:      #315C2B;
+  --color-primary-dark: #1F3A1B;
+  --color-primary-soft: #E8F0E4;
+  --color-primary-glow: #7ADC64;
+
+  --color-accent:       #FF007F;
+  --color-accent-dark:  #C4005F;
+  --color-accent-soft:  #FFE1EE;
+  --color-accent-glow:  #FF66B0;
+
+  --color-bg:           #FFFAF7;
+  --color-cream:        #F5F1EC;
+  --color-surface:      #F0EBE3;
+  --color-surface-dark: #0E1712;
+  --color-ink-inverse:  #FDF7F2;
+
+  --color-text:         #14211A;
+  --color-text-muted:   #55665C;
+  --color-border:       #DFE2D8;
+
+  /* ---- TYPO ---- */
+  --font-heading:  'Bricolage Grotesque', 'Space Grotesk', system-ui, sans-serif;
+  --font-body:     'Inter', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', ui-monospace, monospace;
+  --font-condensed:'Barlow Condensed', 'Oswald', system-ui, sans-serif;
+
+  /* ---- FORME ---- */
+  --radius: 14px;
+  --radius-lg: 24px;
+  --maxw:   1240px;
+}

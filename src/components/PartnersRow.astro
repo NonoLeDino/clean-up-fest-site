@@ -1,0 +1,58 @@
+---
+import { partenaires } from '@/data/site';
+type Props = { compact?: boolean };
+const { compact = false } = Astro.props;
+
+// Ticker double pour boucle infinie
+const doubled = [...partenaires, ...partenaires];
+---
+
+<section class:list={['container-page', compact ? 'py-14' : 'py-24']}>
+  {!compact && (
+    <div class="max-w-2xl mb-10">
+      <span class="chip">Partenaires</span>
+      <h2 class="mt-4">Ceux qui rendent l'event possible.</h2>
+    </div>
+  )}
+
+  <!-- Grille détaillée -->
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-10">
+    {partenaires.map((p) => (
+      <a
+        href={p.href ?? '#'}
+        target={p.href ? '_blank' : undefined}
+        rel={p.href ? 'noopener noreferrer' : undefined}
+        class="card p-6 flex items-center gap-4 cursor-pointer"
+      >
+        <div class="w-16 h-16 rounded-lg bg-surface flex items-center justify-center border border-border shrink-0">
+          <img
+            src={p.logo}
+            alt={p.nom}
+            class="max-w-[70%] max-h-[70%] object-contain"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            loading="lazy"
+          />
+          <span class="hidden font-display text-[10px] text-ink-muted text-center px-1">
+            {p.nom}
+          </span>
+        </div>
+        <div class="min-w-0">
+          <div class="font-semibold text-ink truncate">{p.nom}</div>
+          <div class="text-xs text-ink-muted uppercase tracking-widest mt-0.5">{p.role}</div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- Ticker défilant en bas -->
+  <div class="ticker border-y border-border py-6">
+    <div class="ticker__track">
+      {doubled.map((p) => (
+        <span class="font-display text-xl sm:text-2xl uppercase tracking-tight text-ink-muted whitespace-nowrap">
+          {p.nom}
+          <span class="text-accent mx-6">◆</span>
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

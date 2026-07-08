@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import Gallery from '@/components/Gallery.astro';
+import Aftermovie from '@/components/Aftermovie.astro';
+import RevealScript from '@/components/RevealScript.astro';
+---
+
+<BaseLayout title="Galerie" description="Photos & vidéos des éditions passées du Clean Up Fest.">
+  <PageHero
+    eyebrow="Galerie"
+    title="Souvenirs des éditions passées."
+    desc="Photos et vidéos de nos éditions. 1 500 participants, 2 tonnes ramassées, une bière offerte à chacun."
+    photo="/media/photos/festival-lights.jpg"
+  />
+  <Aftermovie youtubeId="wLQMc32ttX8" />
+  <Gallery />
+  <RevealScript />
+</BaseLayout>

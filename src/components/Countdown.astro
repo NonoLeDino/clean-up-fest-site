@@ -1,0 +1,68 @@
+---
+import { site } from '@/data/site';
+type Props = { compact?: boolean };
+const { compact = false } = Astro.props;
+const target = site.dateEvent;
+---
+
+<div
+  id="countdown"
+  data-target={target}
+  class:list={[
+    'grid grid-cols-4 gap-2 sm:gap-4',
+    compact ? 'max-w-md' : 'max-w-2xl mx-auto',
+  ]}
+  role="timer"
+  aria-live="polite"
+  aria-label="Compte à rebours jusqu'à l'événement"
+>
+  {['Jours', 'Heures', 'Min', 'Sec'].map((label, i) => (
+    <div class="flex flex-col items-center justify-center bg-white/10 backdrop-blur border border-white/20 rounded-lg py-3 sm:py-5">
+      <span
+        data-cd={['d', 'h', 'm', 's'][i]}
+        class="font-display font-semibold text-white tabular-nums leading-none text-3xl sm:text-5xl"
+      >—</span>
+      <span class="mt-2 text-[10px] sm:text-xs uppercase tracking-widest text-white/70 font-semibold">{label}</span>
+    </div>
+  ))}
+</div>
+
+<p id="countdown-done" class="hidden text-center text-accent-soft font-display text-xl mt-4">
+  L'événement a lieu aujourd'hui — retrouvez-nous à Lille !
+</p>
+
+<script>
+  const root = document.getElementById('countdown');
+  const done = document.getElementById('countdown-done');
+  const target = root?.getAttribute('data-target');
+
+  if (root && target && target !== '[À REMPLIR : YYYY-MM-DDTHH:mm]') {
+    const targetTime = new Date(target).getTime();
+    const els = {
+      d: root.querySelector<HTMLElement>('[data-cd="d"]'),
+      h: root.querySelector<HTMLElement>('[data-cd="h"]'),
+      m: root.querySelector<HTMLElement>('[data-cd="m"]'),
+      s: root.querySelector<HTMLElement>('[data-cd="s"]'),
+    };
+    const tick = () => {
+      const now = Date.now();
+      const diff = targetTime - now;
+      if (diff <= 0) {
+        root.classList.add('hidden');
+        done?.classList.remove('hidden');
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff / 3600000) % 24);
+      const m = Math.floor((diff / 60000) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      const pad = (n: number) => n.toString().padStart(2, '0');
+      if (els.d) els.d.textContent = d.toString();
+      if (els.h) els.h.textContent = pad(h);
+      if (els.m) els.m.textContent = pad(m);
+      if (els.s) els.s.textContent = pad(s);
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+</script>

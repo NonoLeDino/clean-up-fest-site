@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHero from '@/components/PageHero.astro';
+import InteractiveMap from '@/components/InteractiveMap.astro';
+import PracticalInfo from '@/components/PracticalInfo.astro';
+import RevealScript from '@/components/RevealScript.astro';
+---
+
+<BaseLayout title="Parcours" description="La carte et les étapes du Clean Up Fest à Lille.">
+  <PageHero
+    eyebrow="Parcours"
+    title="Deux tracés. Une seule ville."
+    desc="Marche 3 km ou course 10 km au cœur de Lille — départ Grand Place, arrivée Citadelle. Ouvert à tous, d'où que vous veniez."
+    photo="/media/photos/running-feet.jpg"
+  />
+
+  <InteractiveMap />
+
+  <section class="container-page py-24 lg:py-32">
+    <div class="grid md:grid-cols-12 gap-8 items-end mb-12">
+      <div class="md:col-span-8">
+        <span class="eyebrow">Étapes clés</span>
+        <h2 class="mt-3">Trois points de passage.</h2>
+      </div>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-3 reveal-group">
+      {[
+        { titre: 'Départ · Grand Place',  desc: 'Accueil, dossards, briefing. Retrait des kits dès 9h00.', photo: '/media/photos/hero-crowd.jpg' },
+        { titre: 'Étape · Vauban',       desc: 'Ramassage collectif au rythme du DJ. Point ravitaillement.',   photo: '/media/photos/cleanup-hands.jpg' },
+        { titre: 'Arrivée · Citadelle',   desc: 'Bière offerte, pesée collective, DJ set de clôture.',        photo: '/media/photos/festival-lights.jpg' },
+      ].map((s, i) => (
+        <div class="reveal">
+          <div class="relative aspect-[4/3] rounded-lg overflow-hidden mb-4">
+            <img src={s.photo} alt="" class="w-full h-full object-cover" loading="lazy"/>
+            <span class="absolute top-3 left-3 chip !bg-white/90 !text-ink">0{i + 1}</span>
+          </div>
+          <h3>{s.titre}</h3>
+          <p class="text-sm text-ink-muted mt-2 leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <PracticalInfo />
+  <RevealScript />
+</BaseLayout>

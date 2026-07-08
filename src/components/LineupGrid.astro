@@ -1,0 +1,50 @@
+---
+import { lineup } from '@/data/site';
+
+const marche = lineup.filter((a) => a.slot === 'Marche');
+const course = lineup.filter((a) => a.slot === 'Course');
+const closing = lineup.filter((a) => a.slot === 'Closing');
+---
+
+<section id="lineup" class="container-page py-24 lg:py-32">
+  <div class="grid md:grid-cols-12 gap-8 items-end mb-12">
+    <div class="md:col-span-8">
+      <span class="eyebrow">Lineup DJ · 8 sets</span>
+      <h2 class="mt-3">Les DJs qui donnent<br/>le rythme.</h2>
+    </div>
+    <div class="md:col-span-4 flex md:justify-end">
+      <a href="/inscription" class="btn btn-outline">Je réserve mon dossard</a>
+    </div>
+  </div>
+
+  <div class="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 reveal-group">
+    {lineup.map((a, i) => (
+      <a href="#" class="group relative aspect-[4/5] rounded-lg overflow-hidden cursor-pointer isolate reveal">
+        <img
+          src={a.photo}
+          alt={a.nom}
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+        {a.headliner && (
+          <span class="absolute top-3 left-3 chip !bg-accent !text-white !text-[10px]">Headliner</span>
+        )}
+        <span class="absolute top-3 right-3 font-mono text-[10px] text-white/70">#{a.id}</span>
+
+        <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 text-white">
+          <div class="text-[10px] uppercase tracking-widest text-white/70 font-mono mb-1">{a.slot}</div>
+          <div class="font-display font-semibold text-xl sm:text-2xl leading-tight">{a.nom}</div>
+          <div class="text-xs text-white/75 mt-0.5">{a.genre}</div>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
+    <div class="text-sm text-ink-muted">
+      <span class="font-semibold text-ink">Programmation complète</span> annoncée par vagues jusqu'au 15 septembre.
+    </div>
+    <a href="#" class="link-anim text-sm font-semibold text-accent">Voir la programmation heure par heure →</a>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+---
+import { site } from '@/data/site';
+---
+
+<div id="ticket-bar" class="ticket-bar translate-y-full opacity-0 transition-all duration-300">
+  <div class="flex items-center gap-4 min-w-0">
+    <span class="w-2 h-2 rounded-full bg-accent pulse-soft shrink-0"></span>
+    <div class="min-w-0">
+      <div class="font-display text-sm sm:text-base font-semibold truncate">
+        {site.dateAffichee} · {site.ville}
+      </div>
+      <div class="text-xs text-white/70 truncate">Inscriptions ouvertes</div>
+    </div>
+  </div>
+  <a href="/inscription" class="btn btn-primary !py-2.5 !px-5 text-sm shrink-0">
+    Get your ticket
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  const bar = document.getElementById('ticket-bar');
+  if (bar) {
+    let shown = false;
+    const check = () => {
+      const y = window.scrollY;
+      const nearBottom = window.innerHeight + y > document.body.scrollHeight - 400;
+      const show = y > window.innerHeight * 0.6 && !nearBottom;
+      if (show !== shown) {
+        shown = show;
+        bar.classList.toggle('translate-y-full', !show);
+        bar.classList.toggle('opacity-0', !show);
+      }
+    };
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  }
+</script>

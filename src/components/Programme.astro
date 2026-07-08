@@ -1,0 +1,76 @@
+---
+import { programme, site } from '@/data/site';
+const days: Array<'Matin' | 'Après-midi' | 'Soir'> = ['Matin', 'Après-midi', 'Soir'];
+---
+
+<section id="programme" class="container-page py-24 lg:py-32">
+  <div class="grid md:grid-cols-12 gap-8 items-end mb-12">
+    <div class="md:col-span-8">
+      <span class="eyebrow">Programme · {site.jourAffiche}</span>
+      <h2 class="mt-3">Une journée.<br/>Trois temps.</h2>
+    </div>
+    <p class="md:col-span-4 text-ink-muted">
+      Le fil rouge : la musique. Du café du matin au closing DJ set, on avance ensemble sur la même cadence.
+    </p>
+  </div>
+
+  <div id="prog-tabs" class="flex flex-wrap gap-2 mb-8 border-b border-border pb-3" role="tablist" aria-label="Périodes de la journée">
+    {days.map((d, i) => (
+      <button
+        type="button"
+        role="tab"
+        data-day={d}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        data-active={i === 0 ? 'true' : 'false'}
+        class="px-5 py-2.5 rounded-full text-sm font-semibold border border-border data-[active=true]:bg-ink data-[active=true]:text-white data-[active=true]:border-ink transition-colors cursor-pointer"
+      >
+        {d}
+      </button>
+    ))}
+  </div>
+
+  <div class="grid gap-2 reveal-group">
+    {days.map((d, i) => (
+      <div data-panel={d} class:list={[i === 0 ? 'grid gap-1.5' : 'hidden']}>
+        {programme.filter((c) => c.jour === d).map((c) => (
+          <div class="border border-border rounded-lg p-5 sm:p-6 grid sm:grid-cols-[110px_1fr_auto] gap-4 sm:gap-6 items-center hover:border-ink transition-colors reveal">
+            <div class="font-display text-3xl text-accent tabular-nums font-semibold">{c.horaires}</div>
+            <div>
+              <h3 class="font-display text-xl text-ink !leading-tight">{c.titre}</h3>
+              <p class="text-sm text-ink-muted mt-1">{c.desc}</p>
+            </div>
+            {c.lieu && (
+              <div class="hidden sm:flex items-center gap-2 text-xs uppercase tracking-widest text-ink-muted font-semibold">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 21c-4-3-8-6-8-11a8 8 0 1116 0c0 5-4 8-8 11z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+                {c.lieu}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const root = document.getElementById('prog-tabs');
+  const tabs = root?.querySelectorAll<HTMLButtonElement>('[data-day]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-panel]');
+  tabs?.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const day = tab.getAttribute('data-day');
+      tabs.forEach((t) => {
+        const active = t === tab;
+        t.setAttribute('data-active', active ? 'true' : 'false');
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      panels.forEach((p) => {
+        const show = p.getAttribute('data-panel') === day;
+        p.classList.toggle('hidden', !show);
+        p.classList.toggle('grid', show);
+      });
+    });
+  });
+</script>

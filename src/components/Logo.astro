@@ -1,0 +1,42 @@
+---
+type Props = {
+  variant?: 'green' | 'pink';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  class?: string;
+  glow?: boolean;
+};
+
+const {
+  variant = 'green',
+  size = 'md',
+  class: className = '',
+  glow = false,
+} = Astro.props;
+
+const src = variant === 'pink' ? '/logos/clean-up-fest-pink.png' : '/logos/clean-up-fest.png';
+
+const sizes: Record<string, string> = {
+  sm: 'h-10',
+  md: 'h-14',
+  lg: 'h-24 sm:h-28',
+  xl: 'h-40 sm:h-52 md:h-64',
+};
+
+const glowClass = variant === 'pink' ? 'neon-halo' : 'neon-halo-green';
+---
+
+<span class:list={['inline-flex items-center', className]}>
+  <img
+    src={src}
+    alt="Clean Up Fest"
+    class:list={[
+      sizes[size],
+      'w-auto object-contain select-none',
+      glow && glowClass,
+    ]}
+    loading="eager"
+    decoding="async"
+  />
+  <!-- Fallback texte (utile si l'image casse) -->
+  <span class="sr-only">Clean Up Fest</span>
+</span>

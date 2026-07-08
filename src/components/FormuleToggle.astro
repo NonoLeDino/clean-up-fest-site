@@ -1,0 +1,66 @@
+---
+import { formules } from '@/data/site';
+---
+
+<section class="container-page py-24">
+  <div class="max-w-2xl mb-8">
+    <span class="chip">Deux formules</span>
+    <h2 class="mt-4">Marche ou course ?</h2>
+    <p class="mt-3 text-ink-muted">Choisissez votre rythme. Dans les deux cas, le DJ vous accompagne.</p>
+  </div>
+
+  <div id="formule-toggle" class="inline-flex items-center bg-cream p-1 rounded-full border border-border mb-8" role="tablist">
+    {formules.map((f, i) => (
+      <button type="button" role="tab" data-formule={f.id}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        data-active={i === 0 ? 'true' : 'false'}
+        class="btn !py-2 !px-6 text-sm data-[active=true]:bg-ink data-[active=true]:text-white text-ink">
+        {f.titre}
+      </button>
+    ))}
+  </div>
+
+  <div class="grid gap-6">
+    {formules.map((f, i) => (
+      <div data-panel={f.id} class:list={['card p-6 sm:p-10', i === 0 ? '' : 'hidden']}>
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h3 class="font-display text-4xl text-primary">{f.titre}</h3>
+            <p class="mt-2 text-ink-muted max-w-md">{f.desc}</p>
+          </div>
+          <div class="chip chip-green text-base font-semibold">{f.prix}</div>
+        </div>
+        <ul class="mt-6 grid sm:grid-cols-2 gap-3">
+          {f.bullets.map((b) => (
+            <li class="flex items-start gap-2 text-sm">
+              <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-8">
+          <a href={`/inscription?formule=${f.id}`} class="btn btn-primary">J'y participe</a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const root = document.getElementById('formule-toggle');
+  const tabs = root?.querySelectorAll<HTMLButtonElement>('[data-formule]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-panel]');
+  tabs?.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const id = tab.getAttribute('data-formule');
+      tabs.forEach((t) => {
+        const active = t === tab;
+        t.setAttribute('data-active', active ? 'true' : 'false');
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      panels.forEach((p) => p.classList.toggle('hidden', p.getAttribute('data-panel') !== id));
+    });
+  });
+</script>
