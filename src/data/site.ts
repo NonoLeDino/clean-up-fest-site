@@ -9,17 +9,18 @@ export const site = {
   ville: 'Lille',
   edition: 'Édition 2026',
   // Date de l'événement — [À REMPLIR : YYYY-MM-DDTHH:mm]
-  dateEvent: '2026-09-20T10:00',
-  dateAffichee: '20 SEPTEMBRE 2026',
-  jourAffiche: 'DIM 20.09.26',
-  lieu: 'Départ Grand Place · Lille',
+  dateEvent: '2026-09-19T10:00',
+  dateAffichee: '19 SEPTEMBRE 2026',
+  jourAffiche: 'SAM 19.09.26',
+  lieu: 'Grand Place → Citadelle',
   horaires: '10h — 22h',
   valeur:
-    "Le Clean Up Fest' est un festival engagé en plein air, qui rassemble tous ceux qui aiment Lille " +
-    "— pour nettoyer la ville en prenant du plaisir, en festoyant et en courant.",
+    "Une marche de 10 km gratuite pour ramasser les déchets ou une course chronométrée au profit du World CleanUp Day. " +
+    "Tout le week-end : DJ sets en continu, food trucks locaux et une bière offerte à l'arrivée !",
   manifeste:
-    'Un festival qui nettoie la ville en dansant. Pas de leçon. Pas de morale. Une journée pour marcher, courir, ramasser et faire la fête ensemble.',
-  accroche: 'Nettoyer Lille en dansant.',
+    "S'engager tout en s'ambiançant, c'est possible. Choisissez votre camp : marchez 10 km pour nettoyer la ville " +
+    "ou courez pour reverser vos 25 € à l'association. À l'arrivée ? DJ set à vélo, food trucks et bière offerte pour tout le monde.",
+  accroche: 'Rejoignez le mouvement !',
   meta: {
     title: "Clean Up Fest — Le festival qui nettoie Lille",
     description:
@@ -48,12 +49,12 @@ export const formules: Formule[] = [
     id: 'marche',
     titre: 'Marche',
     prix: 'Gratuit',
-    desc: "Marchez et ramassez les déchets au rythme d'un DJ set. Ouvert à tous.",
+    desc: "Marche citoyenne de 10 km. Ramassez les déchets au rythme d'un DJ set à vélo, en équipe et dans la bonne humeur.",
     bullets: [
       'Inscription gratuite',
+      '10 km à travers Lille',
       'Sacs & gants fournis',
       "Bière offerte à l'arrivée",
-      'DJ set tout au long du parcours',
     ],
   },
   {
@@ -81,12 +82,12 @@ export type Univers = {
 };
 
 export const univers: Univers[] = [
-  { id: 'clean',     titre: 'Clean',        desc: 'Ramassage collectif des déchets sauvages dans les rues de Lille.',              couleur: 'green', icon: 'leaf',   photo: '/media/photos/beach-cleanup.jpg' },
-  { id: 'music',     titre: 'Music',        desc: "Un DJ set toute la journée. La cadence de la marche comme de la course.",       couleur: 'pink',  icon: 'music',  photo: '/media/photos/dj-console.jpg' },
-  { id: 'run',       titre: 'Run',          desc: "Une course chronométrée solidaire au cœur de la métropole.",                    couleur: 'dark',  icon: 'run',    photo: '/media/photos/running-feet.jpg' },
-  { id: 'food',      titre: 'Food & Drinks',desc: "Foodtrucks locaux et une bière artisanale offerte à l'arrivée.",                couleur: 'cream', icon: 'cup',    photo: '/media/photos/cleanup-hands.jpg' },
-  { id: 'talks',     titre: 'Talks',        desc: 'Conférences éclair sur le zéro-déchet, le mégot, la mode circulaire.',          couleur: 'green', icon: 'mic',    photo: '/media/photos/talk.jpg' },
-  { id: 'community', titre: 'Community',    desc: 'Écoles, entreprises, collectivités, particuliers. Ensemble en même temps.',     couleur: 'pink',  icon: 'people', photo: '/media/photos/food-truck.jpg' },
+  { id: 'clean',     titre: 'Clean',        desc: 'Ramassage collectif des déchets dans les rues de Lille, 10 km à travers la ville.', couleur: 'green', icon: 'leaf',   photo: '/media/photos/cleanup-hand-bag.jpg' },
+  { id: 'music',     titre: 'Music',        desc: "Un DJ à vélo qui vous suit toute la journée. La cadence à votre rythme.",           couleur: 'pink',  icon: 'music',  photo: '/media/photos/dj-console.jpg' },
+  { id: 'run',       titre: 'Run',          desc: "Une course 10 km chronométrée. 100 % de vos 25 € reversés à l'association.",         couleur: 'dark',  icon: 'run',    photo: '/media/photos/running-feet.jpg' },
+  { id: 'food',      titre: 'Food & Drinks',desc: "Foodtrucks locaux et une bière artisanale offerte à l'arrivée.",                    couleur: 'cream', icon: 'cup',    photo: '/media/photos/food-truck.jpg' },
+  { id: 'talks',     titre: 'Talks',        desc: 'Conférences éclair sur le zéro-déchet, le mégot, la mode circulaire.',              couleur: 'green', icon: 'mic',    photo: '/media/photos/talk.jpg' },
+  { id: 'community', titre: 'Community',    desc: 'Écoles, entreprises, collectivités, particuliers. Ensemble en même temps.',         couleur: 'pink',  icon: 'people', photo: '/media/photos/cleanup-volunteers.jpg' },
 ];
 
 /* ============ PROGRAMME (créneaux dans la journée) ============ */
@@ -279,18 +280,18 @@ export type Route = {
 export const routes: Route[] = [
   {
     id: 'marche',
-    label: 'Marche · 3 km',
-    distance: '3 km',
-    duree: '~1h30',
-    denivele: '+15 m',
+    label: 'Marche · 10 km',
+    distance: '10 km',
+    duree: '~3h00',
+    denivele: '+35 m',
     prix: 'Gratuit',
     couleur: '#315C2B',
     path: 'M 15 78 C 22 70, 35 74, 42 62 S 58 48, 70 42 S 84 30, 88 22',
     points: [
-      { id: 'm1', x: 15, y: 78, type: 'start',      titre: 'Départ · Grand Place',   horaires: '10h00', desc: 'Village d\'accueil, café, kits & briefing.' },
-      { id: 'm2', x: 42, y: 62, type: 'village',    titre: 'Village · Rihour',        horaires: '10h20', desc: 'Foodtrucks, pause boisson, DJ set 1.' },
-      { id: 'm3', x: 70, y: 42, type: 'checkpoint', titre: 'Ramassage · Vauban',      horaires: '10h50', desc: 'Zone de ramassage collectif, tri sur place.' },
-      { id: 'm4', x: 88, y: 22, type: 'finish',     titre: 'Arrivée · Citadelle',     horaires: '11h30', desc: 'Pesée, bière offerte, closing set jusqu\'à 22h.' },
+      { id: 'm1', x: 15, y: 78, type: 'start',      titre: 'Départ · Grand Place',    horaires: '10h00', desc: "Village d'accueil, café, kits & briefing équipes." },
+      { id: 'm2', x: 42, y: 62, type: 'village',    titre: 'Village · Rihour',        horaires: '10h45', desc: 'Foodtrucks, pause boisson, DJ à vélo qui vous suit.' },
+      { id: 'm3', x: 70, y: 42, type: 'checkpoint', titre: 'Ramassage · Vauban',      horaires: '11h30', desc: 'Zone de ramassage collectif, tri sur place.' },
+      { id: 'm4', x: 88, y: 22, type: 'finish',     titre: 'Arrivée · Citadelle',     horaires: '13h00', desc: "Pesée, bière offerte, closing set jusqu'à 22h." },
     ],
   },
   {

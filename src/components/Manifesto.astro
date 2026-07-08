@@ -45,13 +45,13 @@ const highlightRe = /(dansant|courant)/gi;
         <!-- Photo collage stacked -->
         <div class="relative aspect-[4/5] max-w-sm reveal">
           <div class="absolute top-0 left-6 w-56 md:w-64 aspect-[3/4] rounded-lg overflow-hidden shadow-2xl rotate-[-4deg] border-4 border-bg">
-            <img src="/media/photos/cleanup-hands.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" loading="lazy"/>
+            <img src="/media/photos/pickup-plastic.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" loading="lazy"/>
           </div>
           <div class="absolute bottom-4 right-0 w-56 md:w-64 aspect-[3/4] rounded-lg overflow-hidden shadow-2xl rotate-[5deg] border-4 border-bg">
             <img src="/media/photos/running-crowd.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" loading="lazy"/>
           </div>
           <div class="absolute top-24 -right-4 w-40 md:w-48 aspect-square rounded-full overflow-hidden shadow-2xl border-4 border-bg z-10">
-            <img src="/media/photos/dj-console.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" loading="lazy"/>
+            <img src="/media/photos/cleanup-street.jpg" alt="" aria-hidden="true" class="w-full h-full object-cover" loading="lazy"/>
           </div>
           <!-- Tag stickers -->
           <div class="absolute -top-3 -left-3 chip !bg-accent !text-white shadow-lg rotate-[-8deg]">
@@ -71,20 +71,36 @@ const highlightRe = /(dansant|courant)/gi;
           <svg class="w-14 h-14 text-accent mb-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M9 7c-3 1-5 3.5-5 7v3h6v-6H7c0-2 1-3.5 3-4V7zm10 0c-3 1-5 3.5-5 7v3h6v-6h-3c0-2 1-3.5 3-4V7z"/>
           </svg>
-          <p class="statement font-display text-[2.2rem] md:text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-ink text-balance">
-            Nettoyer la ville en <span class="hl hl-pink">dansant</span>.
-            Ramasser en <span class="hl hl-green">courant</span>.
-            Faire la fête en agissant.
-            <span class="text-ink-muted">Pas de leçon. Pas de morale. Juste une journée où {site.ville} respire.</span>
+          <p class="statement font-display text-[2rem] md:text-[2.5rem] leading-[1.1] tracking-[-0.02em] text-ink text-balance">
+            <span class="hl hl-pink">S'engager</span> tout en <span class="hl hl-green">s'ambiançant</span>, c'est possible.
+            <span class="text-ink-muted">Choisissez votre camp : marchez 10 km pour nettoyer la ville ou courez pour reverser vos 25 € à l'association. À l'arrivée ? DJ set à vélo, food trucks et bière offerte pour tout le monde.</span>
           </p>
         </div>
 
         <!-- 3 pillars redesigned -->
         <ul class="grid sm:grid-cols-3 gap-4 pt-8 border-t border-border reveal-group">
           {[
-            { chiffre: '01', titre: 'Ramasser', desc: 'Sacs & gants fournis. On travaille en équipe, on rigole en marchant.', icon: 'M6 3h12l1 4H5l1-4z M4 7h16v13a2 2 0 01-2 2H6a2 2 0 01-2-2V7z M10 12h4' },
-            { chiffre: '02', titre: 'Bouger',   desc: 'Marche 3 km ou course 10 km chronométrée. Deux ambiances, un DJ.', icon: 'M13 4a2 2 0 100-4 2 2 0 000 4zm-1 12l-3 3-2 3 M15 8l-3 6 4 4' },
-            { chiffre: '03', titre: 'Fêter',    desc: "Foodtrucks, DJ set jusqu'à 22h, une bière offerte à l'arrivée.",   icon: 'M17 8h1a4 4 0 010 8h-1 M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z M6 4v2 M10 4v2 M14 4v2' },
+            {
+              chiffre: '01',
+              kicker: 'Ramasser · La marche',
+              titre: 'Marcher & Nettoyer',
+              desc: "Une marche citoyenne de 10 km. Sacs et gants fournis, on s'organise en équipe pour faire respirer Lille dans la bonne humeur.",
+              icon: 'M6 3h12l1 4H5l1-4z M4 7h16v13a2 2 0 01-2 2H6a2 2 0 01-2-2V7z M10 12h4',
+            },
+            {
+              chiffre: '02',
+              kicker: 'Courir & Reverser · La course',
+              titre: 'Courir solidaire',
+              desc: "Un défi chronométré pour les runners. Pas de ramassage ici : vos 25 € d'inscription vont droit dans les caisses de l'association.",
+              icon: 'M13 4a2 2 0 100-4 2 2 0 000 4zm-1 12l-3 3-2 3 M15 8l-3 6 4 4',
+            },
+            {
+              chiffre: '03',
+              kicker: 'Profiter · Le festival',
+              titre: "S'ambiancer",
+              desc: "Un DJ à vélo pour vous suivre, des food trucks locaux tout au long de la journée et votre bière offerte sur la ligne d'arrivée.",
+              icon: 'M17 8h1a4 4 0 010 8h-1 M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z M6 4v2 M10 4v2 M14 4v2',
+            },
           ].map((it) => (
             <li class="reveal group relative rounded-lg bg-white border border-border p-6 hover:border-primary/40 transition-all hover:-translate-y-1 duration-300 cursor-pointer">
               <div class="flex items-start justify-between mb-4">
@@ -95,7 +111,8 @@ const highlightRe = /(dansant|courant)/gi;
                 </div>
                 <span class="font-mono text-xs text-ink-muted">{it.chiffre} / 03</span>
               </div>
-              <div class="font-display text-2xl text-primary font-semibold">{it.titre}</div>
+              <div class="font-mono text-[10px] text-ink-muted uppercase tracking-widest mb-1">{it.kicker}</div>
+              <div class="font-display text-2xl text-primary font-semibold leading-tight">{it.titre}</div>
               <div class="text-sm text-ink-muted mt-2 leading-relaxed">{it.desc}</div>
             </li>
           ))}

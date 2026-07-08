@@ -3,18 +3,18 @@ type Props = { preview?: boolean };
 const { preview = false } = Astro.props;
 
 const photos: Array<{ src: string; alt: string }> = [
-  { src: '/media/photos/cleanup-hands.jpg',   alt: "Plat cuisiné servi au foodtruck lors de l'édition 2025" },
-  { src: '/media/photos/dj-console.jpg',      alt: "DJ en action, bras levé face au public, fumée colorée" },
-  { src: '/media/photos/running-crowd.jpg',   alt: "Groupe de coureurs au coucher du soleil, silhouettes en contre-jour" },
-  { src: '/media/photos/festival-lights.jpg', alt: "Confettis et lumières sur le public d'une scène de festival" },
-  { src: '/media/photos/volunteer.jpg',       alt: "Bénévole vu de dos, casquette rouge et t-shirt Volunteer" },
-  { src: '/media/photos/beach-cleanup.jpg',   alt: "Rangée de bacs de tri sélectif jaune, bleu, rouge et vert" },
-  { src: '/media/photos/dj-hands.jpg',        alt: "Portrait rapproché d'un DJ derrière ses platines" },
-  { src: '/media/photos/food-truck.jpg',      alt: "Devanture d'un foodtruck illuminé la nuit, guirlandes lumineuses" },
-  { src: '/media/photos/running-feet.jpg',    alt: "Chaussures de course rouges vues d'en bas dans un escalier" },
-  { src: '/media/photos/talk.jpg',            alt: "Salle de conférence avec écrans lumineux vue en plongée" },
-  { src: '/media/photos/city-lille.jpg',      alt: "Vue d'une place lilloise au coucher du soleil" },
-  { src: '/media/photos/hero-crowd.jpg',      alt: "Foule bras levés face à une scène éclairée en concert" },
+  { src: '/media/photos/pickup-plastic.jpg',     alt: "Main gantée ramassant un déchet plastique au sol" },
+  { src: '/media/photos/dj-console.jpg',         alt: "DJ en action, bras levé face au public, fumée colorée" },
+  { src: '/media/photos/cleanup-street.jpg',     alt: "Ramassage de déchets dans la rue" },
+  { src: '/media/photos/festival-lights.jpg',    alt: "Confettis et lumières sur le public d'une scène de festival" },
+  { src: '/media/photos/cleanup-volunteers.jpg', alt: "Groupe de bénévoles en action lors d'un nettoyage collectif" },
+  { src: '/media/photos/beach-cleanup.jpg',      alt: "Rangée de bacs de tri sélectif jaune, bleu, rouge et vert" },
+  { src: '/media/photos/dj-hands.jpg',           alt: "Portrait rapproché d'un DJ derrière ses platines" },
+  { src: '/media/photos/food-truck.jpg',         alt: "Devanture d'un foodtruck illuminé la nuit, guirlandes lumineuses" },
+  { src: '/media/photos/running-feet.jpg',       alt: "Chaussures de course vues d'en bas dans un escalier" },
+  { src: '/media/photos/cleanup-hand-bag.jpg',   alt: "Personne remplissant un sac poubelle lors d'un nettoyage citoyen" },
+  { src: '/media/photos/running-crowd.jpg',      alt: "Groupe de coureurs au coucher du soleil, silhouettes en contre-jour" },
+  { src: '/media/photos/hero-crowd.jpg',         alt: "Foule bras levés face à une scène éclairée en concert" },
 ];
 const items = preview ? photos.slice(0, 8) : photos;
 ---
