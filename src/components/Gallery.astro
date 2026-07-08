@@ -2,19 +2,19 @@
 type Props = { preview?: boolean };
 const { preview = false } = Astro.props;
 
-const photos = [
-  '/media/photos/cleanup-hands.jpg',
-  '/media/photos/dj-console.jpg',
-  '/media/photos/running-crowd.jpg',
-  '/media/photos/festival-lights.jpg',
-  '/media/photos/volunteer.jpg',
-  '/media/photos/beach-cleanup.jpg',
-  '/media/photos/dj-hands.jpg',
-  '/media/photos/food-truck.jpg',
-  '/media/photos/running-feet.jpg',
-  '/media/photos/talk.jpg',
-  '/media/photos/city-lille.jpg',
-  '/media/photos/hero-crowd.jpg',
+const photos: Array<{ src: string; alt: string }> = [
+  { src: '/media/photos/cleanup-hands.jpg',   alt: "Plat cuisiné servi au foodtruck lors de l'édition 2025" },
+  { src: '/media/photos/dj-console.jpg',      alt: "DJ en action, bras levé face au public, fumée colorée" },
+  { src: '/media/photos/running-crowd.jpg',   alt: "Groupe de coureurs au coucher du soleil, silhouettes en contre-jour" },
+  { src: '/media/photos/festival-lights.jpg', alt: "Confettis et lumières sur le public d'une scène de festival" },
+  { src: '/media/photos/volunteer.jpg',       alt: "Bénévole vu de dos, casquette rouge et t-shirt Volunteer" },
+  { src: '/media/photos/beach-cleanup.jpg',   alt: "Rangée de bacs de tri sélectif jaune, bleu, rouge et vert" },
+  { src: '/media/photos/dj-hands.jpg',        alt: "Portrait rapproché d'un DJ derrière ses platines" },
+  { src: '/media/photos/food-truck.jpg',      alt: "Devanture d'un foodtruck illuminé la nuit, guirlandes lumineuses" },
+  { src: '/media/photos/running-feet.jpg',    alt: "Chaussures de course rouges vues d'en bas dans un escalier" },
+  { src: '/media/photos/talk.jpg',            alt: "Salle de conférence avec écrans lumineux vue en plongée" },
+  { src: '/media/photos/city-lille.jpg',      alt: "Vue d'une place lilloise au coucher du soleil" },
+  { src: '/media/photos/hero-crowd.jpg',      alt: "Foule bras levés face à une scène éclairée en concert" },
 ];
 const items = preview ? photos.slice(0, 8) : photos;
 ---
@@ -30,11 +30,11 @@ const items = preview ? photos.slice(0, 8) : photos;
 
   <!-- Masonry-like grid : columns of variable heights -->
   <div class="columns-2 sm:columns-3 lg:columns-4 gap-3 [column-fill:_balance] space-y-3">
-    {items.map((src, i) => (
+    {items.map((p, i) => (
       <div class="relative overflow-hidden rounded-lg break-inside-avoid group cursor-pointer">
         <img
-          src={src}
-          alt={`Édition 2025 · photo ${i + 1}`}
+          src={p.src}
+          alt={p.alt}
           class:list={['w-full object-cover transition-transform duration-500 group-hover:scale-105',
             i % 5 === 0 ? 'aspect-[3/4]' : i % 5 === 1 ? 'aspect-square' : i % 5 === 2 ? 'aspect-[4/3]' : i % 5 === 3 ? 'aspect-[3/4]' : 'aspect-square']}
           loading="lazy"
