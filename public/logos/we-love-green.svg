@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
-  <text x="10" y="30" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="18" fill="#0F172A">WE LOVE</text>
-  <text x="10" y="55" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="28" fill="#1B7A43" letter-spacing="-1">GREEN</text>
-  <circle cx="130" cy="47" r="3" fill="#FF007F"/>
-</svg>

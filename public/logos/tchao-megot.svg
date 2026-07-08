@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
-  <rect x="8" y="30" width="30" height="8" rx="3" fill="#FF6B4A"/>
-  <rect x="34" y="30" width="6" height="8" fill="#FFB59A"/>
-  <text x="52" y="38" font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="20" fill="#0F172A" letter-spacing="-0.5">tchao</text>
-  <text x="52" y="60" font-family="Inter,system-ui,sans-serif" font-weight="800" font-size="20" fill="#FF6B4A" letter-spacing="-0.5">mégot</text>
-</svg>

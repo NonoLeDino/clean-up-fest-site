@@ -228,12 +228,12 @@ export const kpis: Kpi[] = [
 export type Partenaire = { nom: string; logo: string; role: string; href?: string };
 
 export const partenaires: Partenaire[] = [
-  { nom: 'World Cleanup Day', logo: '/logos/world-cleanup-day.svg', role: 'Association bénéficiaire',        href: 'https://www.worldcleanupday.fr' },
-  { nom: 'Tchao Mégot',       logo: '/logos/tchao-megot.svg',       role: 'Recyclage & doudounes solidaires', href: 'https://tchaomegot.com' },
-  { nom: 'We love Green',     logo: '/logos/we-love-green.svg',     role: 'Partenaire festival',              href: 'https://www.welovegreen.fr' },
-  { nom: 'Ville de Lille',    logo: '/logos/ville-lille.svg',       role: 'Ville hôte',                       href: 'https://www.lille.fr' },
-  { nom: 'MEL',               logo: '/logos/mel.svg',               role: 'Métropole Européenne de Lille',    href: 'https://www.lillemetropole.fr' },
-  { nom: 'Décathlon',         logo: '/logos/decathlon.svg',         role: 'Équipement course',                href: 'https://www.decathlon.fr' },
+  { nom: 'World Cleanup Day', logo: '/logos/world-cleanup-day.webp', role: 'Association bénéficiaire',        href: 'https://www.worldcleanupday.fr' },
+  { nom: 'Tchao Mégot',       logo: '/logos/tchao-megot.png',        role: 'Recyclage & doudounes solidaires', href: 'https://tchaomegot.com' },
+  { nom: 'We love Green',     logo: '/logos/we-love-green.png',      role: 'Partenaire festival',              href: 'https://www.welovegreen.fr' },
+  { nom: 'Ville de Lille',    logo: '/logos/ville-lille.png',        role: 'Ville hôte',                       href: 'https://www.lille.fr' },
+  { nom: 'MEL',               logo: '/logos/mel.jpg',                role: 'Métropole Européenne de Lille',    href: 'https://www.lillemetropole.fr' },
+  { nom: 'Décathlon',         logo: '/logos/decathlon.svg',          role: 'Équipement course',                href: 'https://www.decathlon.fr' },
 ];
 
 /* ============ ACTUALITÉS ============ */
