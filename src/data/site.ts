@@ -52,20 +52,20 @@ export const formules: Formule[] = [
     bullets: [
       'Inscription gratuite',
       'Sacs & gants fournis',
-      'Bière offerte à l\'arrivée',
+      "Bière offerte à l'arrivée",
       'DJ set tout au long du parcours',
     ],
   },
   {
     id: 'course',
     titre: 'Course',
-    prix: 'Sur inscription payante',
-    desc: "Courez pendant l'événement au rythme d'un DJ set. L'argent est reversé à World Cleanup Day.",
+    prix: '25 € solidaires',
+    desc: "Courez pendant l'événement au rythme d'un DJ set. 100 % de l'inscription est reversée à World Cleanup Day.",
     bullets: [
       'Dossard officiel + chronométrage',
-      '100% des bénéfices reversés',
+      "100 % de l'inscription reversée",
       'Sacs & gants fournis',
-      'Bière offerte à l\'arrivée',
+      "Bière offerte à l'arrivée",
     ],
   },
 ];
@@ -270,6 +270,7 @@ export type Route = {
   distance: string;
   duree: string;
   denivele: string;
+  prix: string;
   couleur: string;
   path: string;     // SVG path (0-100 based)
   points: MapPoint[];
@@ -282,6 +283,7 @@ export const routes: Route[] = [
     distance: '3 km',
     duree: '~1h30',
     denivele: '+15 m',
+    prix: 'Gratuit',
     couleur: '#315C2B',
     path: 'M 15 78 C 22 70, 35 74, 42 62 S 58 48, 70 42 S 84 30, 88 22',
     points: [
@@ -297,6 +299,7 @@ export const routes: Route[] = [
     distance: '10 km',
     duree: '~50 min',
     denivele: '+42 m',
+    prix: '25 €',
     couleur: '#FF007F',
     path: 'M 15 78 C 30 82, 45 70, 55 78 S 78 82, 82 66 S 60 52, 50 50 S 30 42, 32 30 S 55 28, 68 34 S 82 26, 88 22',
     points: [

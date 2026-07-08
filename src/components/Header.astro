@@ -8,7 +8,7 @@ import { nav } from '@/data/site';
      class="fixed top-0 left-0 right-0 z-50 h-[3px] bg-accent scale-x-0 origin-left transition-transform duration-100"
      style="transform-origin: left;"></div>
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-40 pt-4 sm:pt-6 transition-all duration-300">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 pt-4 sm:pt-6 transition-transform duration-300 will-change-transform">
   <div class="container-page">
     <div class="flex items-center justify-between gap-4">
 
@@ -81,16 +81,31 @@ import { nav } from '@/data/site';
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  // Scroll progress bar + color adapt (light on hero, dark on other sections)
+  // Scroll: progress bar + color adapt + hide-on-scroll-down / show-on-scroll-up
   const progress = document.getElementById('scroll-progress');
+  const header = document.getElementById('site-header');
   const links = document.querySelectorAll<HTMLElement>('[data-nav-link]');
   const mobileBtn = document.querySelector<HTMLElement>('[data-mobile-btn]');
 
+  let lastY = window.scrollY;
   const onScroll = () => {
     const s = window.scrollY;
     const max = document.body.scrollHeight - window.innerHeight;
     const pct = Math.max(0, Math.min(1, s / Math.max(1, max)));
     if (progress) progress.style.transform = `scaleX(${pct})`;
+
+    // Hide on scroll down, show on scroll up
+    if (header) {
+      const delta = s - lastY;
+      if (s < 80) {
+        header.style.transform = 'translateY(0)';
+      } else if (delta > 4) {
+        header.style.transform = 'translateY(-110%)';
+      } else if (delta < -4) {
+        header.style.transform = 'translateY(0)';
+      }
+    }
+    lastY = s;
 
     // Switch text color from white -> ink after leaving hero
     const overDark = s < (window.innerHeight * 0.75);

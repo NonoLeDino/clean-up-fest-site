@@ -35,7 +35,7 @@ import { routes } from '@/data/site';
   </div>
 
   <!-- Stats row -->
-  <div id="route-stats" class="grid grid-cols-3 gap-4 mb-6 border-y border-border py-5">
+  <div id="route-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 border-y border-border py-5">
     {routes.map((r, i) => (
       <div data-route-stats={r.id} class:list={['contents', i !== 0 && 'hidden']}>
         <div>
@@ -49,6 +49,13 @@ import { routes } from '@/data/site';
         <div>
           <div class="eyebrow">Dénivelé</div>
           <div class="font-display text-2xl font-semibold text-ink mt-1">{r.denivele}</div>
+        </div>
+        <div>
+          <div class="eyebrow">Prix</div>
+          <div class:list={['font-display text-2xl font-semibold mt-1', r.id === 'course' ? 'text-accent' : 'text-primary']}>
+            {r.prix}
+            {r.id === 'course' && <span class="ml-1 text-xs font-mono text-ink-muted uppercase tracking-widest">solidaire</span>}
+          </div>
         </div>
       </div>
     ))}
