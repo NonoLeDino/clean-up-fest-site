@@ -24,7 +24,7 @@ export const site = {
   meta: {
     title: "Clean Up Fest — Le festival qui nettoie Lille",
     description:
-      "Rejoignez le Clean Up Fest à Lille le 20 septembre 2026 : marchez ou courez au rythme d'un DJ, ramassez les déchets, faites la fête. Organisé avec World Cleanup Day.",
+      "Rejoignez le Clean Up Fest à Lille le 19 septembre 2026 : marche 10 km ou course chronométrée, DJ à vélo, food trucks, bière offerte. Organisé avec World Cleanup Day.",
     ogImage: '/logos/clean-up-fest.png',
   },
   // Réseaux officiels de World Cleanup Day (organisation partenaire de l'événement)
@@ -101,7 +101,7 @@ export type Creneau = {
 
 export const programme: Creneau[] = [
   { jour: 'Matin', horaires: '09h00', titre: 'Ouverture village', desc: 'Retrait des kits, café, warm-up collectif.', lieu: 'Grand Place' },
-  { jour: 'Matin', horaires: '10h00', titre: 'Départ Marche', desc: "3 km au rythme du DJ set — ouvert à tous, sacs & gants fournis.", lieu: 'Grand Place → Vauban' },
+  { jour: 'Matin', horaires: '10h00', titre: 'Départ Marche', desc: "10 km au rythme d'un DJ à vélo — ouvert à tous, sacs & gants fournis.", lieu: 'Grand Place → Citadelle' },
   { jour: 'Matin', horaires: '11h00', titre: 'Talk · Tchao Mégot', desc: 'Ce qu\'on fait des mégots après. Recyclage & doudounes solidaires.', lieu: 'Village · scène 1' },
   { jour: 'Après-midi', horaires: '13h00', titre: 'Foodtrucks', desc: 'Cuisine locale, options veggie & sans-gluten.', lieu: 'Village' },
   { jour: 'Après-midi', horaires: '14h30', titre: 'Départ Course', desc: '10 km chronométrés · dossard officiel · DJ live.', lieu: 'Grand Place → Citadelle' },
@@ -109,27 +109,6 @@ export const programme: Creneau[] = [
   { jour: 'Soir', horaires: '18h00', titre: 'Bière offerte', desc: 'À tous les participants — brasserie locale partenaire.', lieu: 'Citadelle' },
   { jour: 'Soir', horaires: '19h00', titre: 'Closing DJ Set', desc: 'Le boss de la journée en live. Set de clôture, ambiance festival.', lieu: 'Citadelle · scène principale' },
   { jour: 'Soir', horaires: '22h00', titre: 'Fin', desc: 'Merci d\'avoir été là. À l\'an prochain.', lieu: '' },
-];
-
-/* ============ LINEUP DJ (vignettes carrées à la WLG) ============ */
-export type Artiste = {
-  id: string;
-  nom: string;
-  slot: 'Marche' | 'Course' | 'Closing';
-  photo: string;
-  genre: string;
-  headliner?: boolean;
-};
-
-export const lineup: Artiste[] = [
-  { id: '1', nom: 'Nono',           slot: 'Marche',  photo: '/media/photos/portrait-8.jpg',        genre: 'French House' },
-  { id: '2', nom: 'Verdure',        slot: 'Marche',  photo: '/media/photos/portrait-2.jpg',        genre: 'Deep House' },
-  { id: '3', nom: 'Ella Cast',      slot: 'Course',  photo: '/media/photos/portrait-1.jpg',        genre: 'Techno' },
-  { id: '4', nom: 'BPM Deûle',      slot: 'Course',  photo: '/media/photos/portrait-3.jpg',        genre: 'Progressive' },
-  { id: '5', nom: 'Tekno Verdure',  slot: 'Course',  photo: '/media/photos/portrait-mid-woman.jpg',genre: 'Hard Techno' },
-  { id: '6', nom: 'Sunset Kids',    slot: 'Closing', photo: '/media/photos/portrait-7.jpg',        genre: 'Disco Edits' },
-  { id: '7', nom: 'Green Machine',  slot: 'Closing', photo: '/media/photos/portrait-6.jpg',        genre: 'Electro Live', headliner: true },
-  { id: '8', nom: 'MC Alba',        slot: 'Closing', photo: '/media/photos/portrait-4.jpg',        genre: 'Hip-Hop / Spoken' },
 ];
 
 /* ============ TÉMOIGNAGES ============ */
@@ -161,7 +140,7 @@ export const faqs: Faq[] = [
   { q: "C'est vraiment gratuit ?", a: "La marche est 100 % gratuite. Seule la course est payante (dossard + chronométrage + 100 % des bénéfices reversés à World Cleanup Day)." },
   { q: "Il faut apporter quelque chose ?", a: "Non — sacs, gants, dossard et gilet sont fournis sur place. Prévoyez des chaussures fermées, de l'eau et de la crème solaire selon la météo." },
   { q: "Je peux venir avec mon chien ?", a: "Oui pour la marche, tenu en laisse et hors zone de départ course. Une poche à eau canine sera disponible au village." },
-  { q: "Et si je ne cours pas ?", a: "La marche est ouverte à tous, sans niveau requis. 3 km à vitesse tranquille, avec DJ set pour donner le rythme." },
+  { q: "Et si je ne cours pas ?", a: "La marche est ouverte à tous, sans niveau requis. 10 km à vitesse tranquille (pauses ramassage incluses), avec DJ à vélo pour donner le rythme." },
   { q: "L'événement est accessible PMR ?", a: "Oui — le parcours de marche est accessible aux fauteuils et poussettes. Un accompagnant peut être demandé au moment de l'inscription." },
   { q: "Qui reçoit l'argent des dossards ?", a: "100 % des bénéfices sont reversés à l'association World Cleanup Day. Compte-rendu financier public publié 30 jours après l'événement." },
   { q: "Comment ma boîte peut participer ?", a: "Passez par le formulaire entreprise. On vous propose un pack team (10 à 200 salariés) avec brief interne, kits nominatifs et bilan carbone remis à la direction." },
@@ -361,7 +340,7 @@ export const igPosts: IgPost[] = [
 ];
 export const pratique = [
   { titre: 'Lieu',      valeur: 'Grand Place, Lille',       sub: 'Départ village · retrait des kits'                    , icon: 'map' },
-  { titre: 'Date',      valeur: '20 septembre 2026',        sub: 'De 10h à 22h · Dimanche'                              , icon: 'calendar' },
+  { titre: 'Date',      valeur: '19 septembre 2026',        sub: 'De 10h à 22h · Samedi'                                , icon: 'calendar' },
   { titre: 'Accès',     valeur: 'Métro Rihour',             sub: 'Ligne 1 · Vélib\' · Parkings à proximité'             , icon: 'metro' },
   { titre: 'Kit',       valeur: 'Sacs, gants, dossards',    sub: 'Fournis sur place, retrait dès 9h00'                  , icon: 'kit' },
   { titre: 'Restauration', valeur: 'Foodtrucks locaux',     sub: 'Options veggie & sans-gluten · bière offerte'         , icon: 'food' },
