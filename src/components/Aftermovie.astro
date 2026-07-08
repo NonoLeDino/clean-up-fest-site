@@ -38,23 +38,9 @@ const {
       </video>
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 pointer-events-none"></div>
 
-      <!-- Play button (hidden when playing full-screen mode) -->
-      <div id="play-btn" class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-accent flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-110">
-          <svg class="w-9 h-9 sm:w-10 sm:h-10 text-white translate-x-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-        </div>
-      </div>
-
-      <!-- Corner labels -->
-      <div class="absolute top-6 left-6 chip !bg-white/15 !text-white !border !border-white/25 backdrop-blur pointer-events-none">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        <span id="aftermovie-time">00:00</span>
-      </div>
-      <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white pointer-events-none">
+      <!-- Titre en bas -->
+      <div class="absolute bottom-6 left-6 right-6 text-white pointer-events-none">
         <div class="font-display font-semibold text-2xl sm:text-3xl">Clean Up Fest · 2025</div>
-        <div class="hidden sm:block font-mono text-xs uppercase tracking-widest text-white/70">4K · 25fps</div>
       </div>
     </button>
   </div>
