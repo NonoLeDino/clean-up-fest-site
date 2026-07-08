@@ -8,7 +8,7 @@ import { nav } from '@/data/site';
      class="fixed top-0 left-0 right-0 z-50 h-[3px] bg-accent scale-x-0 origin-left transition-transform duration-100"
      style="transform-origin: left;"></div>
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-40 pt-4 sm:pt-6 transition-transform duration-300 will-change-transform">
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-[transform,background-color,padding,box-shadow,backdrop-filter] duration-300 will-change-transform pt-4 sm:pt-6">
   <div class="container-page">
     <div class="flex items-center justify-between gap-4">
 
@@ -87,6 +87,19 @@ import { nav } from '@/data/site';
   const links = document.querySelectorAll<HTMLElement>('[data-nav-link]');
   const mobileBtn = document.querySelector<HTMLElement>('[data-mobile-btn]');
 
+  const setBg = (on: boolean) => {
+    if (!header) return;
+    header.classList.toggle('bg-white/95', on);
+    header.classList.toggle('backdrop-blur-xl', on);
+    header.classList.toggle('shadow-[0_6px_24px_rgba(20,33,26,0.06)]', on);
+    header.classList.toggle('border-b', on);
+    header.classList.toggle('border-border', on);
+    header.classList.toggle('pt-4', !on);
+    header.classList.toggle('sm:pt-6', !on);
+    header.classList.toggle('py-3', on);
+    header.classList.toggle('sm:py-4', on);
+  };
+
   let lastY = window.scrollY;
   const onScroll = () => {
     const s = window.scrollY;
@@ -94,10 +107,11 @@ import { nav } from '@/data/site';
     const pct = Math.max(0, Math.min(1, s / Math.max(1, max)));
     if (progress) progress.style.transform = `scaleX(${pct})`;
 
-    // Hide on scroll down, show on scroll up
+    // Position tracking : transparent au top / hide-on-scroll-down / show-on-scroll-up avec bg blanc
+    const atTop = s < 80;
+    const delta = s - lastY;
     if (header) {
-      const delta = s - lastY;
-      if (s < 80) {
+      if (atTop) {
         header.style.transform = 'translateY(0)';
       } else if (delta > 4) {
         header.style.transform = 'translateY(-110%)';
@@ -107,19 +121,22 @@ import { nav } from '@/data/site';
     }
     lastY = s;
 
-    // Switch text color from white -> ink after leaving hero
-    const overDark = s < (window.innerHeight * 0.75);
+    // Fond : transparent en haut, blanc quand on descend au-delà du hero
+    setBg(!atTop);
+
+    // Couleur texte : blanc sur hero (transparent bg), dark sur white bg
+    const useWhiteText = atTop && s < (window.innerHeight * 0.75);
     links.forEach((l) => {
-      l.classList.toggle('text-white/95', overDark);
-      l.classList.toggle('hover:text-white', overDark);
-      l.classList.toggle('text-ink', !overDark);
-      l.classList.toggle('hover:text-accent', !overDark);
+      l.classList.toggle('text-white/95', useWhiteText);
+      l.classList.toggle('hover:text-white', useWhiteText);
+      l.classList.toggle('text-ink', !useWhiteText);
+      l.classList.toggle('hover:text-accent', !useWhiteText);
     });
     if (mobileBtn) {
-      mobileBtn.classList.toggle('border-white/40', overDark);
-      mobileBtn.classList.toggle('text-white', overDark);
-      mobileBtn.classList.toggle('border-border', !overDark);
-      mobileBtn.classList.toggle('text-ink', !overDark);
+      mobileBtn.classList.toggle('border-white/40', useWhiteText);
+      mobileBtn.classList.toggle('text-white', useWhiteText);
+      mobileBtn.classList.toggle('border-border', !useWhiteText);
+      mobileBtn.classList.toggle('text-ink', !useWhiteText);
     }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
