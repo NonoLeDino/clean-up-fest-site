@@ -26,11 +26,11 @@ export const site = {
       "Rejoignez le Clean Up Fest à Lille le 20 septembre 2026 : marchez ou courez au rythme d'un DJ, ramassez les déchets, faites la fête. Organisé avec World Cleanup Day.",
     ogImage: '/logos/clean-up-fest.png',
   },
+  // Réseaux officiels de World Cleanup Day (organisation partenaire de l'événement)
   social: [
-    { label: 'Instagram', href: '#', handle: '@cleanupfest', icon: 'instagram' },
-    { label: 'TikTok',    href: '#', handle: '@cleanupfest', icon: 'tiktok' },
-    { label: 'YouTube',   href: '#', handle: 'Clean Up Fest', icon: 'youtube' },
-    { label: 'LinkedIn',  href: '#', handle: 'Clean Up Fest', icon: 'linkedin' },
+    { label: 'Instagram', href: 'https://www.instagram.com/worldcleanupday/',        handle: '@worldcleanupday',    icon: 'instagram' },
+    { label: 'YouTube',   href: 'https://www.youtube.com/@WorldCleanupDay',         handle: 'World Cleanup Day',   icon: 'youtube' },
+    { label: 'LinkedIn',  href: 'https://www.linkedin.com/company/world-cleanup-day/', handle: 'World Cleanup Day', icon: 'linkedin' },
   ],
 } as const;
 
@@ -147,8 +147,8 @@ export const temoignages: Temoignage[] = [
     quote: "Une course sérieuse avec chrono, mais l'ambiance festival au milieu du parcours. On oublie la douleur, on danse un peu, on repart.",
   },
   {
-    nom: 'Fanny R.',
-    role: 'RSE @ Décathlon Lille',
+    nom: 'F. R.',
+    role: 'Responsable RSE · grande distribution, Lille',
     photo: '/media/photos/portrait-2.jpg',
     quote: "On a inscrit 40 salariés. Zéro relance interne. Le team building qui remplit vraiment sa promesse : le lien, la cause, la fête.",
   },
@@ -219,7 +219,7 @@ export type Kpi = { valeur: string; label: string; sub?: string };
 
 export const kpis: Kpi[] = [
   { valeur: '2340', label: 'kg de déchets ramassés', sub: 'édition 2025' },
-  { valeur: '1512', label: 'participants',           sub: 'marcheurs & coureurs' },
+  { valeur: '1500', label: 'participants',           sub: 'marcheurs & coureurs' },
   { valeur: '8250', label: 'euros reversés',         sub: 'à World Cleanup Day' },
   { valeur: '42800', label: 'mégots recyclés',       sub: 'par Tchao Mégot' },
 ];
@@ -228,12 +228,12 @@ export const kpis: Kpi[] = [
 export type Partenaire = { nom: string; logo: string; role: string; href?: string };
 
 export const partenaires: Partenaire[] = [
-  { nom: 'World Cleanup Day', logo: '/logos/world-cleanup-day.svg', role: 'Association bénéficiaire', href: 'https://www.worldcleanupday.fr' },
+  { nom: 'World Cleanup Day', logo: '/logos/world-cleanup-day.svg', role: 'Association bénéficiaire',        href: 'https://www.worldcleanupday.fr' },
   { nom: 'Tchao Mégot',       logo: '/logos/tchao-megot.svg',       role: 'Recyclage & doudounes solidaires', href: 'https://tchaomegot.com' },
-  { nom: 'We love Green',     logo: '/logos/we-love-green.svg',     role: 'Partenaire festival' },
-  { nom: 'Ville de Lille',    logo: '/logos/ville-lille.svg',       role: 'Ville hôte' },
-  { nom: 'MEL',               logo: '/logos/mel.svg',               role: 'Métropole Européenne de Lille' },
-  { nom: 'Décathlon',         logo: '/logos/decathlon.svg',         role: 'Équipement course' },
+  { nom: 'We love Green',     logo: '/logos/we-love-green.svg',     role: 'Partenaire festival',              href: 'https://www.welovegreen.fr' },
+  { nom: 'Ville de Lille',    logo: '/logos/ville-lille.svg',       role: 'Ville hôte',                       href: 'https://www.lille.fr' },
+  { nom: 'MEL',               logo: '/logos/mel.svg',               role: 'Métropole Européenne de Lille',    href: 'https://www.lillemetropole.fr' },
+  { nom: 'Décathlon',         logo: '/logos/decathlon.svg',         role: 'Équipement course',                href: 'https://www.decathlon.fr' },
 ];
 
 /* ============ ACTUALITÉS ============ */

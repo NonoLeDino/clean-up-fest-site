@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80">
+  <rect x="8" y="18" width="42" height="42" rx="4" fill="#005EB8"/>
+  <text x="14" y="47" font-family="Inter,system-ui,sans-serif" font-weight="900" font-size="22" fill="#fff">MEL</text>
+  <text x="60" y="35" font-family="Inter,system-ui,sans-serif" font-weight="600" font-size="10" fill="#64748B" letter-spacing="0.8">MÉTROPOLE EUROPÉENNE</text>
+  <text x="60" y="58" font-family="Inter,system-ui,sans-serif" font-weight="700" font-size="15" fill="#005EB8">de Lille</text>
+</svg>
