@@ -38,9 +38,11 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
         type="tel"
         name="telephone"
         required
-        pattern="(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}"
+        minlength="10"
+        inputmode="tel"
         placeholder="06 12 34 56 78"
         autocomplete="tel"
+        title="Votre numéro de téléphone (10 chiffres minimum)"
         class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
       />
     </label>
@@ -50,11 +52,13 @@ import { audiences, formules, FORM_ENDPOINT } from '@/data/site';
         type="text"
         name="codePostal"
         required
-        pattern="\d{5}"
+        pattern="[0-9]{5}"
         maxlength="5"
+        minlength="5"
         inputmode="numeric"
         placeholder="59000"
         autocomplete="postal-code"
+        title="Code postal français : 5 chiffres (ex : 59000)"
         class="rounded-lg border border-border bg-white px-4 py-3 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
       />
     </label>
