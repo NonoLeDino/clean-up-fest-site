@@ -350,10 +350,8 @@ export const storyboard: string[] = [
 
 /* ============ NAV ============ */
 export const nav = [
-  { label: 'Le festival', href: '/le-festival' },
   { label: 'Programme',   href: '/#programme' },
   { label: 'Participer',  href: '/participer' },
-  { label: 'Parcours',    href: '/parcours' },
   { label: 'Galerie',     href: '/galerie' },
   { label: 'Partenaires', href: '/partenaires' },
   { label: 'Contact',     href: '/#contact' },

@@ -2,55 +2,35 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/PageHero.astro';
 import FormuleToggle from '@/components/FormuleToggle.astro';
+import GoogleMap from '@/components/GoogleMap.astro';
 import AudienceCards from '@/components/AudienceCards.astro';
+import PracticalInfo from '@/components/PracticalInfo.astro';
 import Faq from '@/components/Faq.astro';
 import RevealScript from '@/components/RevealScript.astro';
-import { audiences } from '@/data/site';
-
-const bg: Record<string, string> = {
-  ecole:        '/media/photos/volunteer.jpg',
-  entreprise:   '/media/photos/talk.jpg',
-  collectivite: '/media/photos/city-lille.jpg',
-  particulier:  '/media/photos/running-crowd.jpg',
-};
 ---
 
-<BaseLayout title="Participer" description="Marche, course, école, entreprise : trouvez votre formule.">
+<BaseLayout title="Participer" description="Formules marche/course, parcours interactif, infos pratiques et FAQ pour participer au Clean Up Fest à Lille.">
   <PageHero
     eyebrow="Participer"
-    title="Choisissez votre porte d'entrée."
-    desc="Deux formules (marche gratuite, course payante) et quatre profils : tout le monde a sa place."
+    title="Marche, course, parcours."
+    desc="Choisissez votre formule, découvrez le tracé et les infos pratiques."
     photo="/media/photos/ai/runners-lille-street.jpg"
   />
 
+  <!-- Étape 1 : choisir sa formule -->
   <FormuleToggle />
 
-  <section class="container-page py-24 lg:py-32">
-    <div class="grid md:grid-cols-12 gap-8 items-end mb-12">
-      <div class="md:col-span-8">
-        <span class="eyebrow">Selon votre profil</span>
-        <h2 class="mt-3">Un parcours d'inscription<br/>par audience.</h2>
-      </div>
-    </div>
+  <!-- Étape 2 : voir le parcours sur Google Maps -->
+  <GoogleMap />
 
-    <div class="grid gap-16 reveal-group">
-      {audiences.map((a, i) => (
-        <div id={a.id} class="grid md:grid-cols-12 gap-8 items-center reveal">
-          <div class:list={['md:col-span-6 relative aspect-[4/3] rounded-lg overflow-hidden', i % 2 ? 'md:order-2' : '']}>
-            <img src={bg[a.id]} alt="" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
-          </div>
-          <div class="md:col-span-6">
-            <div class="eyebrow">0{i + 1} / 04</div>
-            <h3 class="mt-3 !text-4xl">{a.titre}</h3>
-            <p class="mt-3 text-ink-muted text-lg leading-relaxed max-w-md">{a.pitch}</p>
-            <a href={`/inscription?profil=${a.id}`} class="btn btn-primary mt-6">{a.cta}</a>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
+  <!-- Étape 3 : trouver son profil (audiences) -->
   <AudienceCards />
+
+  <!-- Étape 4 : infos pratiques -->
+  <PracticalInfo />
+
+  <!-- FAQ pour dernières questions -->
   <Faq />
+
   <RevealScript />
 </BaseLayout>

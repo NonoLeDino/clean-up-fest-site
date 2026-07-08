@@ -1,0 +1,159 @@
+---
+import { routes, site } from '@/data/site';
+
+/**
+ * Google Maps embed pour le parcours du Clean Up Fest.
+ * Utilise l'API "Directions" en mode iframe (walking), gratuite sans clé pour un affichage basique.
+ * Toggle Marche / Course : chaque formule change la couleur des stats et le mode transport.
+ */
+
+const GRAND_PLACE  = 'Grand Place, Lille, France';
+const CITADELLE    = 'Citadelle de Lille, France';
+const WAYPOINTS    = 'Place Rihour, Lille | Rue de la Halle, Lille | Boulevard Vauban, Lille';
+
+const marcheUrl = `https://www.google.com/maps?saddr=${encodeURIComponent(GRAND_PLACE)}&daddr=${encodeURIComponent(CITADELLE)}&dirflg=w&output=embed`;
+const courseUrl = `https://www.google.com/maps?saddr=${encodeURIComponent(GRAND_PLACE)}&daddr=${encodeURIComponent(CITADELLE)}&dirflg=w&output=embed`;
+
+// Liens externes pour ouvrir Google Maps en plein écran avec directions complètes
+const marcheExt = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(GRAND_PLACE)}&destination=${encodeURIComponent(CITADELLE)}&travelmode=walking&waypoints=${encodeURIComponent(WAYPOINTS)}`;
+const courseExt = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(GRAND_PLACE)}&destination=${encodeURIComponent(CITADELLE)}&travelmode=walking&waypoints=${encodeURIComponent(WAYPOINTS)}`;
+---
+
+<section id="map" class="container-page py-24 lg:py-32">
+  <div class="grid md:grid-cols-12 gap-8 items-end mb-10">
+    <div class="md:col-span-8">
+      <span class="eyebrow">Parcours · {site.ville}</span>
+      <h2 class="mt-3">La map du festival.</h2>
+      <p class="mt-3 text-ink-muted max-w-md">
+        Départ Grand Place, arrivée Citadelle. Basculez entre marche et course pour voir les stats de chaque formule.
+      </p>
+    </div>
+    <div class="md:col-span-4 md:justify-self-end">
+      <div id="route-toggle" role="tablist" aria-label="Choix du parcours"
+           class="inline-flex items-center bg-cream border border-border rounded-full p-1">
+        {routes.map((r, i) => (
+          <button type="button" role="tab" data-route={r.id}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-active={i === 0 ? 'true' : 'false'}
+            class="px-5 py-2 text-sm font-semibold rounded-full cursor-pointer transition-colors data-[active=true]:bg-ink data-[active=true]:text-white text-ink">
+            <span class="w-2 h-2 rounded-full inline-block mr-2" style={`background:${r.couleur}`}></span>
+            {r.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 border-y border-border py-5">
+    {routes.map((r, i) => (
+      <div data-route-stats={r.id} class:list={['contents', i !== 0 && 'hidden']}>
+        <div>
+          <div class="eyebrow">Distance</div>
+          <div class="font-display text-2xl font-semibold text-ink mt-1">{r.distance}</div>
+        </div>
+        <div>
+          <div class="eyebrow">Durée moy.</div>
+          <div class="font-display text-2xl font-semibold text-ink mt-1">{r.duree}</div>
+        </div>
+        <div>
+          <div class="eyebrow">Dénivelé</div>
+          <div class="font-display text-2xl font-semibold text-ink mt-1">{r.denivele}</div>
+        </div>
+        <div>
+          <div class="eyebrow">Prix</div>
+          <div class:list={['font-display text-2xl font-semibold mt-1', r.id === 'course' ? 'text-accent' : 'text-primary']}>
+            {r.prix}
+            {r.id === 'course' && <span class="ml-1 text-xs font-mono text-ink-muted uppercase tracking-widest">solidaire</span>}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="grid lg:grid-cols-12 gap-6">
+    <!-- Google Maps iframe -->
+    <div class="lg:col-span-8">
+      <div class="relative aspect-[16/10] rounded-lg overflow-hidden border border-border shadow-card bg-cream">
+        <iframe
+          src={marcheUrl}
+          title="Parcours Clean Up Fest — Grand Place vers Citadelle de Lille"
+          class="absolute inset-0 w-full h-full"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+
+        <!-- Overlay : "Ouvrir dans Google Maps" -->
+        <a
+          id="map-ext-link"
+          href={marcheExt}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="absolute top-3 right-3 bg-white/95 backdrop-blur border border-border rounded-full px-4 py-2 text-sm font-semibold text-ink shadow-lg hover:bg-white transition-colors flex items-center gap-2"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21c-4-3-8-6-8-11a8 8 0 1116 0c0 5-4 8-8 11z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          Ouvrir dans Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- Info panel -->
+    <aside class="lg:col-span-4">
+      {routes.map((r, ri) => (
+        <div data-route-info={r.id} class:list={['card p-5 h-full', ri !== 0 && 'hidden']}>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-2 h-2 rounded-full" style={`background:${r.couleur}`}></span>
+            <span class="eyebrow">Étapes du parcours</span>
+          </div>
+          <ol class="grid gap-2">
+            {r.points.map((p, i) => (
+              <li class="flex items-start gap-3 py-2 border-b border-border last:border-b-0">
+                <span class="w-6 h-6 shrink-0 rounded-full flex items-center justify-center font-mono text-[10px] font-bold text-white mt-0.5" style={`background:${r.couleur}`}>{i + 1}</span>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <div class="font-semibold text-ink text-sm truncate">{p.titre.replace('· ', '')}</div>
+                    <div class="font-mono text-xs text-accent tabular-nums">{p.horaires}</div>
+                  </div>
+                  <div class="text-xs text-ink-muted mt-0.5">{p.desc}</div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ))}
+    </aside>
+  </div>
+
+  <div class="mt-6 flex flex-wrap items-center gap-4 justify-between border-t border-border pt-6">
+    <div class="text-sm text-ink-muted">
+      Départ village <span class="font-semibold text-ink">Grand Place, Lille</span> · Métro Rihour (ligne 1) · Parkings à proximité
+    </div>
+    <a href="/inscription" class="btn btn-primary !py-2.5">Je m'inscris</a>
+  </div>
+</section>
+
+<script is:inline define:vars={{ marcheUrl, courseUrl, marcheExt, courseExt }}>
+  const toggle = document.getElementById('route-toggle');
+  const tabs = toggle?.querySelectorAll('[data-route]');
+  const iframe = document.querySelector('#map iframe');
+  const extLink = document.getElementById('map-ext-link');
+  const urls = { marche: marcheUrl, course: courseUrl };
+  const exts = { marche: marcheExt, course: courseExt };
+
+  const showRoute = (id) => {
+    tabs?.forEach((t) => {
+      const active = t.getAttribute('data-route') === id;
+      t.setAttribute('data-active', active ? 'true' : 'false');
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+    document.querySelectorAll('[data-route-stats]').forEach((el) => el.classList.toggle('hidden', el.getAttribute('data-route-stats') !== id));
+    document.querySelectorAll('[data-route-info]').forEach((el)  => el.classList.toggle('hidden', el.getAttribute('data-route-info')  !== id));
+    if (iframe) iframe.src = urls[id];
+    if (extLink) extLink.href = exts[id];
+  };
+  tabs?.forEach((t) => t.addEventListener('click', () => showRoute(t.getAttribute('data-route'))));
+</script>
