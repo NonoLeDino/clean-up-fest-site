@@ -277,6 +277,37 @@ export type Route = {
   points: MapPoint[];
 };
 
+// Google Maps waypoints (adresses réelles à Lille) pour matcher 10 km / durée annoncée
+export const gmapWaypoints = {
+  marche: {
+    origin: 'Grand Place, Lille',
+    // Grande boucle festive et touristique dans Lille (~10 km à pied)
+    waypoints: [
+      'Vieux Lille, Lille',
+      'Porte de Roubaix, Lille',
+      'Gare Lille Flandres, Lille',
+      'Parc Jean-Baptiste Lebas, Lille',
+      'Wazemmes, Lille',
+      'Boulevard Vauban, Lille',
+      'Bois de Boulogne, Lille',
+    ],
+    destination: 'Citadelle de Lille',
+  },
+  course: {
+    origin: 'Grand Place, Lille',
+    // Boucle sportive plus rectiligne
+    waypoints: [
+      'Gare Lille Flandres, Lille',
+      'Boulevard Louis XIV, Lille',
+      'Parc Jean-Baptiste Lebas, Lille',
+      'Wazemmes, Lille',
+      'Bois de Boulogne, Lille',
+      'Champ de Mars, Lille',
+    ],
+    destination: 'Citadelle de Lille',
+  },
+} as const;
+
 export const routes: Route[] = [
   {
     id: 'marche',

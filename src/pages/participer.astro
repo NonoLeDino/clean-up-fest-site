@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHero from '@/components/PageHero.astro';
-import FormuleToggle from '@/components/FormuleToggle.astro';
 import GoogleMap from '@/components/GoogleMap.astro';
 import AudienceCards from '@/components/AudienceCards.astro';
 import PracticalInfo from '@/components/PracticalInfo.astro';
@@ -17,10 +16,7 @@ import RevealScript from '@/components/RevealScript.astro';
     photo="/media/photos/ai/runners-lille-street.jpg"
   />
 
-  <!-- Étape 1 : choisir sa formule -->
-  <FormuleToggle />
-
-  <!-- Étape 2 : voir le parcours sur Google Maps -->
+  <!-- Étape 1+2 fusionnées : choisir sa formule + voir le parcours -->
   <GoogleMap />
 
   <!-- Étape 3 : trouver son profil (audiences) -->
