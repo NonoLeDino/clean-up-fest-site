@@ -1,6 +1,9 @@
 ---
-type Props = { youtubeId?: string };
-const { youtubeId = 'dQw4w9WgXcQ' } = Astro.props;
+type Props = { videoSrc?: string; poster?: string };
+const {
+  videoSrc = '/media/video/aftermovie.mp4',
+  poster = '/media/photos/ai/aerial-march-grand-place.jpg',
+} = Astro.props;
 ---
 
 <section class="section-dark relative overflow-hidden">
@@ -18,20 +21,25 @@ const { youtubeId = 'dQw4w9WgXcQ' } = Astro.props;
     <button
       type="button"
       id="aftermovie-btn"
-      data-youtube={youtubeId}
-      class="relative w-full aspect-video rounded-lg overflow-hidden bg-black cursor-pointer group focus-visible:outline-accent"
+      class="relative w-full aspect-video rounded-lg overflow-hidden bg-black cursor-pointer group focus-visible:outline-accent block"
       aria-label="Lancer l'aftermovie"
     >
-      <img
-        src="/media/photos/ai/aerial-march-grand-place.jpg"
-        alt=""
-        aria-hidden="true"
-        class="absolute inset-0 w-full h-full object-cover opacity-80 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40"></div>
+      <!-- Preview video (muted, silent loop) -->
+      <video
+        id="aftermovie-preview"
+        class="absolute inset-0 w-full h-full object-cover"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster={poster}
+      >
+        <source src={videoSrc} type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/40 pointer-events-none"></div>
 
-      <!-- Play button -->
-      <div class="absolute inset-0 flex items-center justify-center">
+      <!-- Play button (hidden when playing full-screen mode) -->
+      <div id="play-btn" class="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-accent flex items-center justify-center shadow-glow transition-transform duration-300 group-hover:scale-110">
           <svg class="w-9 h-9 sm:w-10 sm:h-10 text-white translate-x-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M8 5v14l11-7z"/>
@@ -40,27 +48,27 @@ const { youtubeId = 'dQw4w9WgXcQ' } = Astro.props;
       </div>
 
       <!-- Corner labels -->
-      <div class="absolute top-6 left-6 chip !bg-white/15 !text-white !border !border-white/25 backdrop-blur">
+      <div class="absolute top-6 left-6 chip !bg-white/15 !text-white !border !border-white/25 backdrop-blur pointer-events-none">
         <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-        02:34
+        <span id="aftermovie-time">00:00</span>
       </div>
-      <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
+      <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white pointer-events-none">
         <div class="font-display font-semibold text-2xl sm:text-3xl">Clean Up Fest · 2025</div>
-        <div class="hidden sm:block font-mono text-xs uppercase tracking-widest text-white/70">4K · 25fps</div>
+        <div class="hidden sm:block font-mono text-xs uppercase tracking-widest text-white/70">Aftermovie · IA</div>
       </div>
     </button>
   </div>
 
-  <!-- Modal video -->
+  <!-- Modal fullscreen -->
   <div id="aftermovie-modal" class="hidden fixed inset-0 z-[60] bg-black/95 backdrop-blur-md items-center justify-center p-4">
     <button type="button" id="aftermovie-close" class="absolute top-6 right-6 w-11 h-11 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 cursor-pointer" aria-label="Fermer">
       <svg class="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
-    <div class="w-full max-w-5xl aspect-video rounded-lg overflow-hidden">
-      <iframe id="aftermovie-iframe" class="w-full h-full" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-    </div>
+    <video id="aftermovie-full" class="w-full max-w-5xl aspect-video rounded-lg" controls playsinline>
+      <source src={videoSrc} type="video/mp4">
+    </video>
   </div>
 </section>
 
@@ -68,19 +76,33 @@ const { youtubeId = 'dQw4w9WgXcQ' } = Astro.props;
   const btn = document.getElementById('aftermovie-btn');
   const modal = document.getElementById('aftermovie-modal');
   const close = document.getElementById('aftermovie-close');
-  const iframe = document.getElementById('aftermovie-iframe') as HTMLIFrameElement | null;
+  const full = document.getElementById('aftermovie-full') as HTMLVideoElement | null;
+  const preview = document.getElementById('aftermovie-preview') as HTMLVideoElement | null;
+  const time = document.getElementById('aftermovie-time');
+
+  // Play preview quietly on hover
+  btn?.addEventListener('mouseenter', () => { preview?.play().catch(() => {}); });
+  btn?.addEventListener('mouseleave', () => { preview?.pause(); if (preview) preview.currentTime = 0; });
+
+  // Update time chip from preview
+  preview?.addEventListener('loadedmetadata', () => {
+    if (time && preview.duration) {
+      const s = Math.floor(preview.duration);
+      time.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+    }
+  });
 
   const open = () => {
-    if (!modal || !iframe || !btn) return;
-    const id = btn.getAttribute('data-youtube');
-    iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    if (!modal || !full) return;
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    full.play().catch(() => {});
   };
   const shut = () => {
-    if (!modal || !iframe) return;
-    iframe.src = '';
+    if (!modal || !full) return;
+    full.pause();
+    full.currentTime = 0;
     modal.classList.add('hidden');
     modal.classList.remove('flex');
     document.body.style.overflow = '';

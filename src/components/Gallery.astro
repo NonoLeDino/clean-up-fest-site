@@ -4,17 +4,17 @@ const { preview = false } = Astro.props;
 
 const photos: Array<{ src: string; alt: string }> = [
   { src: '/media/photos/ai/cleanup-crowd-lille.jpg',     alt: "Foule engagée sur la Grand Place de Lille avec drapeaux verts et roses" },
-  { src: '/media/photos/ai/cigarette-butts-hand.jpg',    alt: "Main gantée tenant une pile de mégots ramassés" },
+  { src: '/media/photos/ai/march-2025-belfry.jpg',       alt: "Participants passant devant le Beffroi de Lille avec drapeaux" },
   { src: '/media/photos/ai/volunteers-team-lille.jpg',   alt: "Équipe de 5 bénévoles en gilets fluo ramassant des déchets à Lille" },
-  { src: '/media/photos/ai/dj-on-bike.jpg',              alt: "DJ mixant sur un vélo cargo pendant le festival, ambiance dansante" },
   { src: '/media/photos/ai/coat-to-homeless.jpg',        alt: "Bénévole donnant une doudoune verte à une personne sans-abri" },
-  { src: '/media/photos/ai/runners-lille-street.jpg',    alt: "Coureurs avec dossards sur les pavés lillois au lever du soleil" },
   { src: '/media/photos/ai/foodtruck-festival.jpg',      alt: "Foodtruck festival avec queue de gourmands, ambiance dorée" },
-  { src: '/media/photos/ai/beer-finish-line.jpg',        alt: "Bouteilles de bière artisanale offertes à l'arrivée de la course" },
-  { src: '/media/photos/ai/green-puffer-recycled.jpg',   alt: "Doudoune verte olive issue de mégots recyclés, packshot studio" },
-  { src: '/media/photos/ai/briefing-volunteers.jpg',     alt: "Briefing d'une équipe de bénévoles dans un parc, ambiance automnale" },
-  { src: '/media/photos/ai/aerial-march-grand-place.jpg',alt: "Vue aérienne de la marche citoyenne partant de la Grand Place" },
-  { src: '/media/photos/ai/trash-transformation.jpg',    alt: "Concept photo : mégots à gauche, doudoune verte à droite, transformation solidaire" },
+  { src: '/media/photos/ai/march-2025-family.jpg',       alt: "Famille ramassant des déchets ensemble dans un parc lillois" },
+  { src: '/media/photos/ai/march-2025-dj-crowd.jpg',     alt: "DJ à vélo entouré de danseurs et ramasseurs" },
+  { src: '/media/photos/ai/march-2025-finish.jpg',       alt: "Coureurs à l'arrivée sous une arche Clean Up Fest, médailles" },
+  { src: '/media/photos/ai/march-2025-selfie.jpg',       alt: "Selfie de groupe de bénévoles avec leurs sacs remplis" },
+  { src: '/media/photos/ai/march-2025-cleanup.jpg',      alt: "Gros plan de mains ramassant un déchet sur les pavés de Lille" },
+  { src: '/media/photos/ai/cigarette-butts-hand.jpg',    alt: "Main gantée tenant une pile de mégots ramassés" },
+  { src: '/media/photos/ai/march-2025-beer.jpg',         alt: "Participants trinquant à la fin de la journée, ambiance conviviale" },
 ];
 const items = preview ? photos.slice(0, 8) : photos;
 ---

@@ -102,6 +102,87 @@ const IMAGES = [
     prompt:
       "Split-frame concept photo: on the left, a pile of cigarette butts, on the right, an olive green puffer jacket, connected by a subtle arrow of green light, minimalist studio background, editorial magazine style. " + STYLE_TAIL,
   },
+  // ================ Batch 2 : Marche Lille 2025 pour la galerie ================
+  {
+    slug: 'march-2025-belfry',
+    aspect: '4:3',
+    prompt:
+      "Wide shot of a citizen march passing in front of the iconic Belfry of Lille (Beffroi de Lille), participants holding pink and green flags, autumn morning, warm sunlight, French urban architecture. " + STYLE_TAIL,
+  },
+  {
+    slug: 'march-2025-family',
+    aspect: '4:3',
+    prompt:
+      "Documentary photo: a smiling family with two kids (ages 8 and 10) picking up trash together in a park in Lille, morning light, wearing casual sportswear and gloves, feeling of pride and community. " + STYLE_TAIL,
+  },
+  {
+    slug: 'march-2025-selfie',
+    aspect: '4:3',
+    prompt:
+      "Group of 6 diverse volunteers taking a selfie with their filled trash bags, big smiles, Lille cobblestone street background, warm afternoon light, feeling of achievement. " + STYLE_TAIL,
+  },
+  {
+    slug: 'march-2025-dj-crowd',
+    aspect: '4:3',
+    prompt:
+      "DJ on a mobile bike stage surrounded by a dancing crowd of runners and walkers, everyone smiling and cleaning up as they move, sunny day in Lille, festival vibe. " + STYLE_TAIL,
+  },
+  {
+    slug: 'march-2025-finish',
+    aspect: '4:3',
+    prompt:
+      "Runners crossing a finish line arch marked 'CLEAN UP FEST' at the Citadelle de Lille, arms raised in victory, medals being placed on necks, joyful crowd cheering, golden hour. " + STYLE_TAIL,
+  },
+  {
+    slug: 'march-2025-cleanup',
+    aspect: '4:3',
+    prompt:
+      "Close-up documentary photo: hands picking up a plastic bottle from cobblestone Lille street, filled trash bag beside, morning natural light, gritty realistic texture. " + STYLE_TAIL,
+  },
+  {
+    slug: 'march-2025-beer',
+    aspect: '4:3',
+    prompt:
+      "Group of tired but happy participants clinking beer bottles at the end of the day, wooden picnic tables in a Lille park, string lights, sunset light, casual celebration. " + STYLE_TAIL,
+  },
+  // ================ Batch 3 : Posts Instagram (square, plus intimate) ================
+  {
+    slug: 'ig-before-after',
+    aspect: '1:1',
+    prompt:
+      "Photo split diptych of the same Lille cobblestone street: left side dirty with trash and cigarette butts, right side clean and tidy, same angle same time of day, editorial before/after. " + STYLE_TAIL,
+  },
+  {
+    slug: 'ig-team-highfive',
+    aspect: '1:1',
+    prompt:
+      "Two diverse volunteers giving each other a high-five in a Lille street, holding filled trash bags, mid-action photo, joyful energy, editorial lifestyle shot. " + STYLE_TAIL,
+  },
+  {
+    slug: 'ig-portrait-vol',
+    aspect: '1:1',
+    prompt:
+      "Environmental portrait of a young Black female volunteer wearing a Clean Up Fest tshirt, holding a trash grabber tool, Lille street blurred behind, warm smile, golden hour. " + STYLE_TAIL,
+  },
+  {
+    slug: 'ig-medal',
+    aspect: '1:1',
+    prompt:
+      "Close-up macro shot of a Clean Up Fest race medal made of upcycled materials, hanging on a runner's neck, sweat visible, victorious mood, product photography feel. " + STYLE_TAIL,
+  },
+  {
+    slug: 'ig-food-plate',
+    aspect: '1:1',
+    prompt:
+      "Top-down flat lay of a delicious sustainable meal from a foodtruck: quinoa salad, roasted vegetables, herbal tea, wooden serving board, natural light. " + STYLE_TAIL,
+  },
+  // ================ Batch 4 : Contact background ================
+  {
+    slug: 'team-behind',
+    aspect: '16:9',
+    prompt:
+      "Warm team photo: 8 diverse young event organizers of Clean Up Fest gathered casually in a bright Lille loft office, laughing together, walls covered with pink and green posters, natural window light, editorial documentary style. " + STYLE_TAIL,
+  },
 ];
 
 const OUT_DIR = path.resolve('public/media/photos/ai');

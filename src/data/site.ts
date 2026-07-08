@@ -318,15 +318,15 @@ export const routes: Route[] = [
 /* ============ INSTAGRAM WALL ============ */
 export type IgPost = { image: string; caption: string; likes: number; days: number };
 export const igPosts: IgPost[] = [
-  { image: '/media/photos/ai/cleanup-crowd-lille.jpg',    caption: 'H-3 avant le grand jour. Playlist prête, sacs prêts, on est prêts.',       likes: 2412, days: 2 },
-  { image: '/media/photos/ai/dj-on-bike.jpg',             caption: 'Merci @dj_verdure pour ce set incroyable ✨ #CleanUpFest2025',                likes: 3120, days: 5 },
-  { image: '/media/photos/ai/runners-lille-street.jpg',   caption: '10K solidaire — 512 coureurs, 8 250 € reversés à @worldcleanupday 🏃‍♀️',      likes: 1876, days: 7 },
-  { image: '/media/photos/ai/cigarette-butts-hand.jpg',   caption: '2,3 tonnes de déchets. Ramassés à Lille. En dansant. Chiffres 2025.',        likes: 4508, days: 10 },
-  { image: '/media/photos/portrait-6.jpg',                caption: 'Portrait de @sunset_kids avant son closing set. On sait déjà que ça va tap.', likes: 2201, days: 12 },
-  { image: '/media/photos/ai/beer-finish-line.jpg',       caption: 'La brasserie La Choulette nous rejoint pour 2026 🍻 Bière offerte à tous.',   likes: 1892, days: 14 },
-  { image: '/media/photos/ai/briefing-volunteers.jpg',    caption: "150 bénévoles briefés ce weekend. La team qui rend l'event possible ❤️",      likes: 3455, days: 18 },
-  { image: '/media/photos/ai/green-puffer-recycled.jpg',  caption: 'On teste avec @tchaomegot : les mégots deviennent des doudounes solidaires.', likes: 1620, days: 21 },
-  { image: '/media/photos/ai/coat-to-homeless.jpg',       caption: 'Nos doudounes offertes aux maraudes du Nord. Reversées à 100 %. Merci ❤️',    likes: 2778, days: 25 },
+  { image: '/media/photos/ai/ig-before-after.jpg',      caption: "Avant / après : la rue du Molinel. Merci à celles et ceux qui rendent Lille plus propre.",  likes: 4508, days: 2 },
+  { image: '/media/photos/ai/ig-team-highfive.jpg',     caption: "High-five d'équipe après 4h de ramassage. On est raccord. #CleanUpFest2025",              likes: 3120, days: 5 },
+  { image: '/media/photos/ai/march-2025-belfry.jpg',    caption: "Le Beffroi nous a vus passer. 1 500 pas engagés dans le silence puis la fête.",           likes: 2412, days: 7 },
+  { image: '/media/photos/ai/ig-portrait-vol.jpg',      caption: "Portrait · Amina, bénévole depuis 2024. « J'en fais mon rendez-vous annuel. »",           likes: 2201, days: 10 },
+  { image: '/media/photos/ai/ig-medal.jpg',             caption: "La médaille officielle 10K — faite en matière recyclée. Sur chaque cou d'arrivant.",       likes: 2778, days: 12 },
+  { image: '/media/photos/ai/ig-food-plate.jpg',        caption: "La cuisine nomade nous régale. Bio, local, savoureux. 🍽️ #foodtruck",                     likes: 1620, days: 14 },
+  { image: '/media/photos/ai/dj-on-bike.jpg',           caption: "Merci @dj_verdure pour ce set incroyable ✨ Un DJ à vélo, c'était pas gagné.",             likes: 3455, days: 18 },
+  { image: '/media/photos/ai/coat-to-homeless.jpg',     caption: "Doudounes offertes aux maraudes du Nord — mégots récoltés = chaleur redistribuée. ❤️",     likes: 1876, days: 21 },
+  { image: '/media/photos/ai/march-2025-finish.jpg',    caption: "Arrivée du 10K solidaire — 8 250 € reversés à @worldcleanupday 🏃‍♀️",                     likes: 1892, days: 25 },
 ];
 export const pratique = [
   { titre: 'Lieu',      valeur: 'Grand Place, Lille',       sub: 'Départ village · retrait des kits'                    , icon: 'map' },

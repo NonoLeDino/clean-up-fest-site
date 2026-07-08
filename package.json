@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "generate-images": "node scripts/generate-images.mjs"
+    "generate-images": "node scripts/generate-images.mjs",
+    "generate-video": "node scripts/generate-video.mjs"
   },
   "dependencies": {
     "@astrojs/tailwind": "^5.1.4",
